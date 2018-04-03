@@ -1,0 +1,7 @@
+static/*
+*.pyc
+*/__pycache__/*
+*/.pytest_cache/*
+client/node_modules/*
+client/coverage
+*/package-lock.json
