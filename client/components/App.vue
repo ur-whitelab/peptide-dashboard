@@ -1,8 +1,9 @@
 <template>
   <div>
-    <linked-input-box port=5000></linked-input-box>
+    <linked-input-box port="5000"></linked-input-box>
     <br/>
-    <model-controller port=5000 updateFrequency=100></model-controller>
+    <!-- v-bind to make a number -->
+    <model-controller port="5000" v-bind:updateFrequency="100"></model-controller>
   </div>
 </template>
 
@@ -15,3 +16,7 @@
     components: {LinkedInputBox, ModelController}
   }
 </script>
+
+<style>
+  @import "~bulma/bulma.sass";
+</style>
