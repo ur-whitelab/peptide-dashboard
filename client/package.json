@@ -19,6 +19,7 @@
     "bulma": "^0.6.2",
     "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.9",
+    "d3": "^5.0.0",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -38,7 +39,6 @@
     "url-loader": "^0.6.2",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^14.1.1",
-    "vue-style-loader": "^4.0.2",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
