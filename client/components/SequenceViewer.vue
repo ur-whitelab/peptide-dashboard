@@ -37,7 +37,7 @@ export default {
         console.log('updated: ' + this.viewWidth + ' now ' + this.$refs.sequenceGraph.width + ' canvas ' + ctx.canvas.width)
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         if (!this.sd3)
-          this.sd3 = new SequenceD3(this.$refs.sequenceGraph)
+          this.sd3 = new SequenceD3(this.$refs.sequenceGraph, (index) => { this.$emit('selection-update', index) })
         else
           this.sd3.width = this.viewWidth
 

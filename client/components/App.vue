@@ -16,7 +16,7 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column ">
-      <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
+      <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence {{selectedIndex}}</h1>
       <div class="field has-addons">
         <div ref="sequencecontainer" class="control is-expanded">
           <input id="sequence" class="input" spellcheck="false" autocorrect="off" type="text" placeholder="PEPVIDE" v-model="sequence">
@@ -33,7 +33,7 @@
 </section>
 <section>
   <div class="container">
-    <sequence-viewer v-bind:sequence="sequence" v-bind:view-width="viewWidth"></sequence-viewer>
+    <sequence-viewer v-bind:sequence="sequence" v-bind:view-width="viewWidth" v-on:selection-update="selectedIndex = $event"></sequence-viewer>
   </div>
 </section>
 </div>
@@ -48,7 +48,8 @@ export default {
   data () {
     return {
       sequence: '',
-      viewWidth: 800
+      viewWidth: 800,
+      selectedIndex: -1
     }
   },
   mounted: function () {

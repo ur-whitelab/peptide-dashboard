@@ -3,11 +3,12 @@ import {forceSimulation, forceManyBody, forceCenter, forceLink, forceX, forceY} 
 import {drag} from 'd3-drag'
 
 class SequenceD3 {
-  constructor (canvas) {
+  constructor (canvas, selectionListener) {
     this.canvas = canvas
     this.context = canvas.getContext('2d')
     this.width = canvas.width
     this.height = canvas.height
+    this.selectionListener = selectionListener
 
     this.simulation = forceSimulation()
       .force('link', forceLink().distance(this.width / 20))
@@ -53,6 +54,7 @@ class SequenceD3 {
         // console.log(xy)
         if (subject) {
           this.selected = subject.id
+          this.selectionListener(subject.id)
           this.ticked() // call tick to make sure redrawn
         } else
           this.selected = -1
