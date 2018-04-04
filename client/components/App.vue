@@ -18,8 +18,8 @@
       <div class="column ">
       <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
       <div class="field has-addons">
-        <div class="control is-expanded">
-          <input id="sequence" class="input" type="text" placeholder="PEPVIDE" v-model="sequence">
+        <div ref="sequencecontainer" class="control is-expanded">
+          <input id="sequence" class="input" spellcheck="false" autocorrect="off" type="text" placeholder="PEPVIDE" v-model="sequence">
         </div>
         <div class="control">
           <a class="button is-info">
@@ -33,7 +33,7 @@
 </section>
 <section>
   <div class="container">
-    <sequence-viewer v-bind:sequence="sequence"></sequence-viewer>
+    <sequence-viewer v-bind:sequence="sequence" v-bind:view-width="viewWidth"></sequence-viewer>
   </div>
 </section>
 </div>
@@ -47,9 +47,14 @@ export default {
   components: {SequenceViewer},
   data () {
     return {
-      sequence: ''
+      sequence: '',
+      viewWidth: 800
     }
+  },
+  mounted: function () {
+    this.viewWidth = this.$refs.sequencecontainer.offsetWidth
   }
+
 }
 </script>
 

@@ -12,6 +12,7 @@ class SequenceD3 {
     this.simulation = forceSimulation()
       .force('link', forceLink().distance(this.width / 20))
       .force('charge', forceManyBody())
+      .force('repel', forceManyBody().strength(-150).distanceMax(5))
       .force('x', forceX().strength(0.0))
       .force('y', forceY().strength(0.0))
       .force('center', forceCenter(this.width / 2, this.height / 2))
@@ -34,9 +35,19 @@ class SequenceD3 {
           event.subject.fx = null
           event.subject.fy = null
         }))
-    select(canvas).on('mouseenter', () => {
+
+    // default size
+    this.radius = 250
+    this.selected = -1
+
+    this.simulation.on('tick', this.ticked.bind(this))
+    this.update('')
+  }
+
+  enableSelection () {
+    select(this.canvas).on('mouseenter', () => {
       // when we are hovered, do this
-      select(canvas).on('mousemove', () => {
+      select(this.canvas).on('mousemove', () => {
         let xy = mouse(this.canvas)
         let subject = this.simulation.find(xy[0], xy[1])
         // console.log(xy)
@@ -48,17 +59,15 @@ class SequenceD3 {
       })
     })
       .on('mouseleave', () => {
-        select(canvas).on('mousemove', null)
+        select(this.canvas).on('mousemove', null)
       })
+  }
 
-    // default size
-    this.radius = 250
-    this.context.textAlign = 'center'
-    this.context.textBaseline = 'middle'
+  disableSelection () {
     this.selected = -1
-
-    this.simulation.on('tick', this.ticked.bind(this))
-    this.update('')
+    select(this.canvas).on('mouseenter', null)
+      .on('mousemove', null)
+      .on('mouseleave', null)
   }
 
   update (sequence) {
@@ -75,11 +84,23 @@ class SequenceD3 {
       this.simulation.force('y').strength(Math.min(0.1, this.nodes.length * 0.1 / 50))
     }
 
+    // remove selection if too big
+    if (sequence.length > 50)
+      this.disableSelection()
+    else {
+      // clear out first, so we don't double down
+      this.disableSelection()
+      this.enableSelection()
+    }
+
     // adjust drawing properties
-    this.radius = Math.max(5, 250 / (this.nodes.length + 1))
+    this.radius = Math.max(7, 250 / (this.nodes.length + 1))
+    this.simulation.force('repel').distanceMax(this.radius * 2)
     this.context.font = `${Math.round(Math.max(10, 72 / Math.sqrt(1 + this.nodes.length)))}px sans-serif`
 
+    // update forces
     this.simulation.nodes(this.nodes)
+    this.simulation.force('center').x(this.width / 2)
     this.links = this.simulation.nodes().slice(0, -1).map((n, i) => { return {source: i, target: i + 1} })
     this.simulation.force('link').links(this.links)
     this.simulation.force('link').distance(this.width / this.nodes.length)
@@ -120,6 +141,8 @@ class SequenceD3 {
     }
 
     this.context.fillStyle = '#444'
+    this.context.textAlign = 'center'
+    this.context.textBaseline = 'middle'
     this.nodes.forEach((d) => {
       this.context.fillText(d.name.toUpperCase(), d.x, d.y)
     })
