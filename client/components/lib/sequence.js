@@ -1,4 +1,4 @@
-import {event, select, mouse} from 'd3-selection'
+import {event, select} from 'd3-selection'
 import {forceSimulation, forceManyBody, forceCenter, forceLink, forceX, forceY} from 'd3-force'
 import {drag} from 'd3-drag'
 
@@ -26,6 +26,8 @@ class SequenceD3 {
           if (!event.active) this.simulation.alphaTarget(0.3).restart()
           event.subject.fx = event.subject.x
           event.subject.fy = event.subject.y
+          this.selected = event.subject.id
+          this.selectionListener(event.subject.id)
         })
         .on('drag', () => {
           event.subject.fx = event.x
@@ -45,33 +47,6 @@ class SequenceD3 {
     this.update('')
   }
 
-  enableSelection () {
-    select(this.canvas).on('mouseenter', () => {
-      // when we are hovered, do this
-      select(this.canvas).on('mousemove', () => {
-        let xy = mouse(this.canvas)
-        let subject = this.simulation.find(xy[0], xy[1])
-        // console.log(xy)
-        if (subject) {
-          this.selected = subject.id
-          this.selectionListener(subject.id)
-          this.ticked() // call tick to make sure redrawn
-        } else
-          this.selected = -1
-      })
-    })
-      .on('mouseleave', () => {
-        select(this.canvas).on('mousemove', null)
-      })
-  }
-
-  disableSelection () {
-    this.selected = -1
-    select(this.canvas).on('mouseenter', null)
-      .on('mousemove', null)
-      .on('mouseleave', null)
-  }
-
   update (sequence) {
     this.nodes = sequence.split('').map((x, i) => { return {name: x, id: i, y: 0, x: i * this.width / sequence.length - this.width / 2} })
     // keep data for existing nodes
@@ -87,13 +62,6 @@ class SequenceD3 {
     }
 
     // remove selection if too big
-    if (sequence.length > 50)
-      this.disableSelection()
-    else {
-      // clear out first, so we don't double down
-      this.disableSelection()
-      this.enableSelection()
-    }
 
     // adjust drawing properties
     this.radius = Math.max(7, 250 / (this.nodes.length + 1))
