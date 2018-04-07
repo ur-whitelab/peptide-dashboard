@@ -91,6 +91,7 @@ export default {
   position: absolute;
   left: 0px;
   top: 0px;
+  padding: 0.75rem;
   z-index: 2;
 }
 
