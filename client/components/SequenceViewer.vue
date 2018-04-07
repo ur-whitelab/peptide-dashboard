@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="sequenceGraph" width="960" height="450"> </canvas>
+  <canvas ref="sequenceGraph" width="960" height="200"> </canvas>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
   watch: {
     sequence: _.debounce(function () {
       this.sd3.update(this.sequence)
-    }, 250),
+    }, 500),
 
     viewWidth: function () {
       this.updateCanvasSize()

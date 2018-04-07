@@ -44,6 +44,8 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
     "raw-loader": "^0.5.1",
     "vue": "^2.5.13"
   }
