@@ -96,7 +96,7 @@ export default {
 }
 
 section {
-  padding-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 .tile {
