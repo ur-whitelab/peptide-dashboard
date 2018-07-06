@@ -4,4 +4,6 @@ static/*
 */.pytest_cache/*
 client/node_modules/*
 client/coverage
+*~
+
 

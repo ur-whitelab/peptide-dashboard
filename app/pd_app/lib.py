@@ -4,7 +4,7 @@ import asyncio, pkg_resources
 cache = redis.Redis(host='redis', port=6379)
 book = pkg_resources.resource_filename('pd_app', 'data/pride-prejudice.txt')
 
-class Model:
+'''class Model:
     def __init__(self, redis = cache):
         self.cache = redis
         self._init()
@@ -31,3 +31,4 @@ class Model:
         return 0
     def train_status(self):
         return 0
+'''

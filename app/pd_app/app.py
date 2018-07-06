@@ -1,5 +1,6 @@
 from . import lib
 from quart import Quart, jsonify, request
+from peptideqspr.evaluation.evaluate_peptide import Model
 
 
 app = Quart(__name__)
@@ -8,7 +9,7 @@ model = None
 def get_model():
     global model
     if model is None:
-        model = lib.Model()
+        model = Model()
     return model
 
 @app.route('/predict/<query>')
@@ -17,7 +18,7 @@ def predict(query):
     response = jsonify({'prediction': prediction})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-
+'''
 @app.route('/train/start')
 def train_start():
     get_model().train_start()
@@ -40,7 +41,7 @@ async def train_delete():
     response = jsonify({})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
-
+'''
 def start():
     app.run(host="0.0.0.0", debug=True, port=5000)
 
