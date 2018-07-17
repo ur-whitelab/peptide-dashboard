@@ -44,12 +44,36 @@
               <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Milton Coupling Efficiency </h3>
                   <a href="#" class="card-header-icon" aria-label="more options">
                     <span class="icon">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      <i class="fa fa-arrow-up" aria-hidden="true"></i>
                     </span>
                   </a>
             </header>
             <div class="card-content">
               <milton v-bind:sequence="sequence" v-bind:selectedIndex="selectedIndex"></milton>
+            </div>
+        </div>
+      </div>
+      <div class="tile">
+        <!-- Add content or other tiles -->
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="tile is-ancestor">
+      <div class="tile is-7">
+        <div class="card">
+            <header class="card-header">
+              <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Predicted Properties </h3>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                    </span>
+                  </a>
+            </header>
+            <div class="card-content">
+              <prediction v-bind:sequence="sequence" port="5000"></prediction>
             </div>
         </div>
       </div>
@@ -66,10 +90,11 @@
 import SequenceViewer from './SequenceViewer'
 import Milton from './results/Milton'
 import SequenceInput from './SequenceInput'
+import Prediction from './results/Prediction'
 
 export default {
   name: 'App',
-  components: { SequenceViewer, Milton, SequenceInput },
+  components: { SequenceViewer, Milton, Prediction, SequenceInput },
   data () {
     return {
       sequence: '',

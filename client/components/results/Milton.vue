@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted: function () {
-    this.scatter.draw(this.$refs.scatter, this.$refs.parent.offsetWidth, 400, 'Position', 'Relative Easy of Synthesis')
+    this.scatter.draw(this.$refs.scatter, this.$refs.parent.offsetWidth, 400, 'Position', 'Relative Ease of Synthesis')
   },
   watch: {
     sequence: _.debounce(function (s) {

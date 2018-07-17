@@ -12,7 +12,7 @@ const config = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.css', '.node'],
+      extensions: ['.js', '.vue', '.json', '.css', '.node'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname)
