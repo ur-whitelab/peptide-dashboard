@@ -1,8 +1,11 @@
 <template>
-    <div>
-      <prediction-result title="antimicrobial" description="Prediciton of antimicrobial activity" v-bind:prediction=prediction.antimicrobial> </prediction-result>
-      <prediction-result title="antifouling" description="Prediciton of antimicrobial activity" v-bind:prediction=prediction.antifouling> </prediction-result>
-    </div>
+<div>
+<!--  <h3><em>Antimicrobial Model</em></h3> -->
+  <prediction-result id="antimicrobial-predict" title="antimicrobial" description="Prediciton of antimicrobial activity" v-bind:prediction=prediction.antimicrobial v-bind:sequence="sequence" :name="prediction.antimicrobial.predict? 'Antimicrobial activity predicted.' : 'No antimicrobial activity predicted.'"></prediction-result>
+  <br>
+<!--  <h3><em>Antifouling Model</em></h3> -->
+  <prediction-result id="antifouling-predict" title="antifouling" description="Prediciton of antifouling activity" v-bind:prediction=prediction.antifouling v-bind:sequence="sequence" :name="prediction.antifouling.predict? 'Antifouling activity predicted.' : 'No antifouling activity predicted.'"> </prediction-result>
+</div>
 </template>
 
 <script>
