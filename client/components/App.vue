@@ -53,15 +53,6 @@
             </div>
         </div>
       </div>
-      <div class="tile">
-        <!-- Add content or other tiles -->
-      </div>
-    </div>
-  </div>
-</section>
-<section>
-  <div class="container">
-    <div class="tile is-ancestor">
       <div class="tile is-7">
         <div class="card">
             <header class="card-header">
@@ -76,13 +67,14 @@
               <prediction v-bind:sequence="sequence" port="5000"></prediction>
             </div>
         </div>
-      </div>
+      </div>      
       <div class="tile">
         <!-- Add content or other tiles -->
       </div>
     </div>
   </div>
 </section>
+
 </div>
 </template>
 
