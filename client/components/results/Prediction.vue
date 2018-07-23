@@ -1,9 +1,9 @@
 <template>
 <div>
-  <h3 ><em>{{prediction.finished ? 'Antimicrobial Model' : ''}}</em></h3>
+  <h3 ><em>{{sequence ? 'Antimicrobial Model' : ''}}</em></h3>
   <prediction-result id="antimicrobial-predict" title="antimicrobial" description="Prediciton of antimicrobial activity" v-bind:prediction=prediction.antimicrobial v-bind:sequence="sequence" :name="prediction.antimicrobial.predict? 'Antimicrobial activity predicted.' : 'No antimicrobial activity predicted.'"></prediction-result>
   <br>
-  <h3 ><em>{{prediction.finished ? 'Antifouling Model' : ''}}</em></h3>
+  <h3 ><em>{{sequence ? 'Antifouling Model' : ''}}</em></h3>
   <prediction-result id="antifouling-predict" title="antifouling" description="Prediciton of antifouling activity" v-bind:prediction=prediction.antifouling v-bind:sequence="sequence" :name="prediction.antifouling.predict? 'Antifouling activity predicted.' : 'No antifouling activity predicted.'"> </prediction-result>
 </div>
 </template>
@@ -43,8 +43,7 @@ export default {
           this.prediction.antifouling = response.data.prediction.antifouling
           this.prediction.antimicrobial = response.data.prediction.antimicrobial
           this.prediction.finished = true
-        }
-        else {
+        } else {
           this.prediction.antifouling = {}
           this.prediction.antimicrobial = {}
           this.prediction.finished = false

@@ -38,8 +38,8 @@
 <section>
   <div class="container">
     <div class="tile is-ancestor">
-      <div class="tile is-6">
-        <div class="card">
+      <div class="tile is-6 is-parent">
+        <div class="card tile is-child">
             <header class="card-header">
               <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Milton Coupling Efficiency </h3>
                   <a href="#" class="card-header-icon" aria-label="more options">
@@ -53,8 +53,8 @@
             </div>
         </div>
       </div>
-      <div class="tile is-7">
-        <div class="card">
+      <div class="tile is-6 is-parent">
+        <div class="card tile is-child">
             <header class="card-header">
               <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Predicted Properties </h3>
                   <a href="#" class="card-header-icon" aria-label="more options">

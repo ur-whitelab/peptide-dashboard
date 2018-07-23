@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-if="prediction.accuracy">
+  <div v-if="sequence">
     <h2 title="Accuracy on withheld data.">Model accuracy: {{prediction.accuracy}}</h2>
     <div v-if="prediction.found_motif">
       <h2 title="Found motif displayed in bold green.">Found Motif: <font class="uppercase">{{sequence.slice(0, prediction.most_likely_motif_start)}}<strong><font color="green">{{sequence.slice(prediction.most_likely_motif_start, prediction.most_likely_motif_start + 3)}}</font></strong>{{sequence.slice(prediction.most_likely_motif_start + 3, sequence.length)}}</font></h2>
