@@ -9,7 +9,7 @@
         The White Laboratory
       </span>
       </div>
-      <sequence-viewer v-bind:sequence="sequence" v-bind:view-width="viewWidth" v-on:selection-update="selectedIndex = $event"></sequence-viewer>
+      <sequence-viewer :sequence="sequence" :view-width="viewWidth" v-on:selection-update="selectedIndex = $event"></sequence-viewer>
       <div class="container">
 
       </div>
@@ -49,8 +49,11 @@
                   </a>
             </header>
             <div class="card-content">
-              <milton v-bind:sequence="sequence" v-bind:selectedIndex="selectedIndex"></milton>
+              <milton :sequence="sequence" :selectedIndex="selectedIndex"></milton>
             </div>
+            <footer class="card-footer">
+              <reference reflink="https://pubs.acs.org/doi/abs/10.1021/ja00172a020" reftitle="Prediction of difficult sequences in solid-phase peptide synthesis" journal="J. Am. Chem. Soc." year="1990" volume="112" issue="16" pages="6039-6046" doi="10.1021/ja00172a020"></reference>
+            </footer>
         </div>
       </div>
       <div class="tile is-6 is-parent">
@@ -64,8 +67,11 @@
                   </a>
             </header>
             <div class="card-content">
-              <prediction v-bind:sequence="sequence" port="5000"></prediction>
+              <prediction :sequence="sequence" port="5000"></prediction>
             </div>
+            <footer class="card-footer">
+              <reference reflink="https://arxiv.org/abs/1804.06327" reftitle="Classifying Antimicrobial and Multifunctional Peptides with Bayesian Network Models" journal="arXiv" year="2018"></reference>
+            </footer>
         </div>
       </div>      
       <div class="tile">
@@ -83,10 +89,11 @@ import SequenceViewer from './SequenceViewer'
 import Milton from './results/Milton'
 import SequenceInput from './SequenceInput'
 import Prediction from './results/Prediction'
+import Reference from './Reference'
 
 export default {
   name: 'App',
-  components: { SequenceViewer, Milton, Prediction, SequenceInput },
+  components: { SequenceViewer, Milton, Prediction, SequenceInput, Reference },
   data () {
     return {
       sequence: '',
@@ -118,5 +125,9 @@ section {
 
 .tile {
   padding: (0.75rem / 2);
+}
+.card-footer {
+  position: absolute;
+  bottom: 0rem;  
 }
 </style>
