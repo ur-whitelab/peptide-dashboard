@@ -11,7 +11,7 @@
         </div>
         <sequence-viewer :sequence="sequence" :view-width="viewWidth" v-on:selection-update="selectedIndex = $event"></sequence-viewer>
         <div class="container">
-          
+
         </div>
       </div>
     </div>
@@ -67,13 +67,13 @@
               </a>
             </header>
             <div class="card-content">
-              <prediction :sequence="sequence" port="5000"></prediction>
+              <prediction :sequence="sequence" port="" host="https://jhub.rochester.edu"></prediction>
             </div>
             <footer class="card-footer">
               <reference reflink="https://arxiv.org/abs/1804.06327" reftitle="Classifying Antimicrobial and Multifunctional Peptides with Bayesian Network Models" journal="arXiv" year="2018"></reference>
             </footer>
           </div>
-        </div>      
+        </div>
       </div>
       <div class="tile">
         <footer><small><sup>*</sup>Datasets: <a href="http://aps.unmc.edu/AP/main.php">Antimicrobial Peptide Database</a>, <a href="http://pubs.rsc.org/en/content/articlehtml/2012/sc/c2sc21135a">Antifouling Dataset (White et al.)</a></small></footer><!-- Add content or other tiles -->
@@ -129,7 +129,7 @@ section {
 }
 .card-footer {
   position: absolute;
-  bottom: 0rem;  
+  bottom: 0rem;
 }
 footer {
   position: absolute;

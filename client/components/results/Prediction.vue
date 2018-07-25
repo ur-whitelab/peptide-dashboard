@@ -38,7 +38,7 @@ export default {
   methods: {
     makePrediction: async function (str) {
       if (str.length >= 3) {
-        const response = await axios.get('http://' + this.host + ':' + this.port + '/predict/' + str)
+        const response = await axios.get(this.host + (this.port ? ':' + this.port : '') + '/predict/' + str)
         if ('prediction' in response.data) {
           this.prediction.antifouling = response.data.prediction.antifouling
           this.prediction.antimicrobial = response.data.prediction.antimicrobial
