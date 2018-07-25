@@ -1,8 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const eslitFriendlyForm = require('eslint-friendly-formatter')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const config = {
   entry: './main.js',
@@ -12,18 +12,12 @@ const config = {
     filename: 'bundle.js'
   },
   resolve: {
-      extensions: ['.js', '.vue', '.json', '.css', '.node'],
+    extensions: ['.js', '.vue', '.json', '.css', '.node'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname)
     }
   },
-  devServer: {
-    contentBase: path.join(__dirname, '../static'),
-    compress: true,
-    port: 9000
-  },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -78,10 +72,10 @@ const config = {
         }
       },
       {
-          test:/\.(sass|scss)$/,
-          use:['style-loader','css-loader', 'sass-loader']
-        }
-      ]
+        test: /\.(sass|scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -96,8 +90,6 @@ const config = {
         ? path.resolve(__dirname, 'node_modules')
         : false
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin('../static')
   ]
 }
