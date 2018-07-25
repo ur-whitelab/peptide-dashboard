@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><small>Reference: <a :href="reflink">{{reftitle}}</a>. <em>{{journal ? journal : ''}}</em> <b>{{year ? ', ' + year : ''}}</b><em>{{volume ? ',' + volume : ''}}</em> {{issue ? '(' + issue + ')' : ''}} {{pages ? pages +'.' : '.' }} {{doi ? 'DOI: ' + doi + '.' : ''}}</small></p>
+    <p><small>Reference: <a :href="reflink">{{reftitle}}</a>. <em>{{journal ? journal : ''}}</em><span v-if="year">, <b>{{year ? year : ''}}</b></span><em>{{volume ? ', ' + volume : ''}}</em>{{issue ? ' (' + issue + ')' : ''}}{{pages ? ' ' + pages +'.' : '.' }} {{doi ? 'DOI: ' + doi + '.' : ''}}</small></p>
   </div>
 </template>
 

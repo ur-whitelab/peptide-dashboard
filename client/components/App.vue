@@ -59,7 +59,7 @@
         <div class="tile is-6 is-parent">
           <div class="card tile is-child">
             <header class="card-header">
-              <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Predicted Properties </h3>
+              <h3 class=" card-header-title is-size-4 is-spaced bd-anchor-title">Predicted Properties<sup>*</sup> </h3>
               <a href="#" class="card-header-icon" aria-label="more options">
                 <span class="icon">
                   <i class="fa fa-arrow-up" aria-hidden="true"></i>
@@ -76,7 +76,7 @@
         </div>      
       </div>
       <div class="tile">
-        <footer><small>Datasets: <a href="http://aps.unmc.edu/AP/main.php">Antimicrobial Peptide Database</a>, <a href="http://pubs.rsc.org/en/content/articlehtml/2012/sc/c2sc21135a">Antifouling Dataset (White et al.)</a></small></footer><!-- Add content or other tiles -->
+        <footer><small><sup>*</sup>Datasets: <a href="http://aps.unmc.edu/AP/main.php">Antimicrobial Peptide Database</a>, <a href="http://pubs.rsc.org/en/content/articlehtml/2012/sc/c2sc21135a">Antifouling Dataset (White et al.)</a></small></footer><!-- Add content or other tiles -->
       </div>
     </div>
   </section>
