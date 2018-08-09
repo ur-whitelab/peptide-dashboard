@@ -16,7 +16,8 @@ class SequenceD3 {
       .force('repel', forceManyBody().strength(-150).distanceMax(5))
       .force('x', forceX().strength(0.0))
       .force('y', forceY().strength(0.0))
-      .force('center', forceCenter(this.width / 2, this.height / 2))
+      // set center a little low to prevent occluding title
+      .force('center', forceCenter(this.width / 2, this.height * 0.65))
 
     select(canvas)
       .call(drag()
@@ -64,7 +65,8 @@ class SequenceD3 {
     // remove selection if too big
 
     // adjust drawing properties
-    this.radius = Math.max(7, 250 / (this.nodes.length + 1))
+    // Have upper/lower bound for sizes
+    this.radius = Math.min(50, Math.max(7, 250 / (this.nodes.length + 1)))
     this.simulation.force('repel').distanceMax(this.radius * 2)
     this.context.font = `${Math.round(Math.max(10, 72 / Math.sqrt(1 + this.nodes.length)))}px sans-serif`
 
