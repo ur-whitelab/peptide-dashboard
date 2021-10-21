@@ -5,5 +5,5 @@ static/*
 client/node_modules/*
 client/coverage
 *~
-
+.parcel-cache/
 

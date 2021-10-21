@@ -67,7 +67,7 @@
               </a>
             </header>
             <div class="card-content">
-              <prediction :sequence="sequence" port="" host="https://jhub.rochester.edu"></prediction>
+              <prediction :sequence="sequence" port="" host="http://18.232.255.99"></prediction>
             </div>
             <footer class="card-footer">
               <reference reflink="https://arxiv.org/abs/1804.06327" reftitle="Classifying Antimicrobial and Multifunctional Peptides with Bayesian Network Models" journal="arXiv" year="2018"></reference>
