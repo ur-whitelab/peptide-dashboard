@@ -10,7 +10,6 @@
 
 <script>
 import PredictionResult from './PredictionResult'
-import axios from 'axios'
 export default {
   name: 'Prediction',
   components: { PredictionResult },
@@ -38,7 +37,8 @@ export default {
   methods: {
     makePrediction: async function (str) {
       if (str.length >= 3) {
-        const response = await axios.get(this.host + (this.port ? ':' + this.port : '') + '/predict/' + str)
+        // TODO!
+        resonse = null;
         if ('prediction' in response.data) {
           this.prediction.antifouling = response.data.prediction.antifouling
           this.prediction.antimicrobial = response.data.prediction.antimicrobial

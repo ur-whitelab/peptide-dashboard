@@ -1,5 +1,10 @@
-import App from "./components/App";
-import { createApp } from "vue";
-
-const app = createApp(App);
-app.mount("#app");
+import Vue from 'vue'
+import App from './components/App.vue'
+/* eslint-disable no-new */
+new Vue({
+  components: { App },
+  template: '<App/>',
+  created: function () {
+    this.$mount('#app')
+  }
+})

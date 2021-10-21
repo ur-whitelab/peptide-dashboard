@@ -1,9 +1,7 @@
 // 1. Import the initial variables
-@import "npm:bulma/sass/utilities/initial-variables";
-@import "npm:bulma/sass/utilities/functions";
+@import "npm:bulma/sass/utilities/initial-variables.sass";
+@import "npm:bulma/sass/utilities/functions.sass";
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed');
-$fa-font-path: "npm:font-awesome/fonts";
-@import 'npm:font-awesome/scss/font-awesome.scss';
 
 // 2. Set your own initial variables
 // Update blue
@@ -32,7 +30,7 @@ $github: #333;
 $github-invert: findColorInvert($github);
 
 // 5. Add new color variables to the color map.
-@import "~bulma/sass/utilities/derived-variables";
+@import "npm:bulma/sass/utilities/derived-variables.sass";
 $addColors: (
   "twitter":($twitter, $twitter-invert),
   "linkedin": ($linkedin, $linkedin-invert),
