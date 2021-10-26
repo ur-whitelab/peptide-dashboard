@@ -11,8 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@parcel/transformer-vue": "^2.0.0",
+    "axios": "^0.24.0",
     "bulma": "^0.9.3",
-    "d3": "^7.1.1",
+    "d3": "^5.0.0",
     "lodash": "^4.17.21",
     "parcel": "^2.0.0",
     "vue": "^3.2.20"

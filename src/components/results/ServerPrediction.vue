@@ -37,15 +37,14 @@
 
 <script>
 import PredictionResult from "./PredictionResult";
+import axios from "axios";
 export default {
-  name: "Prediction",
+  name: "ServerPrediction",
   components: { PredictionResult },
   props: {
     sequence: String,
     port: String,
-    host: {
-      default: "127.0.0.1",
-    },
+    host: String,
     width: {
       type: Number,
       default: 300,
@@ -64,8 +63,9 @@ export default {
   methods: {
     makePrediction: async function (str) {
       if (str.length >= 3) {
-        // TODO!
-        resonse = null;
+        const response = await axios.get(
+          this.host + (this.port ? ":" + this.port : "") + "/predict/" + str
+        );
         if ("prediction" in response.data) {
           this.prediction.antifouling = response.data.prediction.antifouling;
           this.prediction.antimicrobial =
