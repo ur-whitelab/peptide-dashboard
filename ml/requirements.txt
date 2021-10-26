@@ -1,0 +1,6 @@
+tensorflow
+tensorflowjs
+jupyter
+matplotlib
+keras-tuner
+pandas
