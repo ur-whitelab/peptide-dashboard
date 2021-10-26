@@ -48,9 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "style/style.scss";
 #sequence {
-  font-family: $family-mono;
   text-transform: uppercase;
 }
 </style>

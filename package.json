@@ -1,0 +1,24 @@
+{
+  "name": "peptide-dashboard",
+  "version": "1.0.0",
+  "description": "Peptide Dashboard client package",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
+  },
+  "author": "Andrew White",
+  "license": "ISC",
+  "dependencies": {
+    "@parcel/transformer-vue": "^2.0.0",
+    "axios": "^0.24.0",
+    "bulma": "^0.9.3",
+    "d3": "^5.0.0",
+    "lodash": "^4.17.21",
+    "parcel": "^2.0.0",
+    "vue": "^3.2.20"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0"
+  }
+}

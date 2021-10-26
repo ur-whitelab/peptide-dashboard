@@ -7,6 +7,7 @@
 <script>
 
 import Scatter from '../lib/scatter.js'
+import _ from 'lodash'
 let miltonData = require('../lib/milton.json')
 
 export default {
