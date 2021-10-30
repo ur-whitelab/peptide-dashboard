@@ -9,3 +9,5 @@ client/coverage
 .cache/
 dist/
 node_modules/
+**.npz
+ml/tuning
