@@ -4,25 +4,20 @@ const stoi = { "A": 0, "R": 1, "N": 2, "D": 3, "C": 4, "Q": 5, "E": 6, "G": 7, "
 const vocab = ['A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'];
 
 const rnn_mod = {
-    startLoad: (fxn) => {
+    startLoad: () => {
         const loader = tf.loadLayersModel('https://raw.githubusercontent.com/whitead/molecule-dream/main/static/model/model.json');
         loader.then((model) => {
             rnn_mod.model = (t) => {
                 return model.predict(t);
             }
             rnn_mod.model_loaded = 'loaded';
-            fxn('loaded')
-            rnn_mod.resetStates = () => {
-                model.resetStates();
-            }
         }, () => {
             rnn_mod.model_loaded = 'failed';
-            fxn('failed');
         });
     }
 };
 
-
+rnn_mod.model_loaded = 'not loading';
 
 rnn_mod.resetStates = () => {
     // placeholder, overwritten on load

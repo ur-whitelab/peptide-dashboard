@@ -11,3 +11,4 @@ dist/
 node_modules/
 **.npz
 ml/tuning
+ml/.ipynb_checkpoints/*

@@ -1,58 +1,45 @@
 <template>
   <div>
     <h3>
-      <em>{{ sequence ? "Antimicrobial Model" : "" }}</em>
+      <em>{{ sequence ? "Solubility Model" : "" }}</em>
     </h3>
     <prediction-result
-      id="antimicrobial-predict"
-      title="antimicrobial"
-      description="Prediciton of antimicrobial activity"
-      v-bind:prediction="prediction.antimicrobial"
+      id="sol-predict"
+      title="sol"
+      description="Prediciton of solubility"
+      v-bind:prediction="prediction.sol"
       v-bind:sequence="sequence"
       :name="
-        prediction.antimicrobial.predict
-          ? 'Antimicrobial activity predicted.'
-          : 'No antimicrobial activity predicted.'
-      "
-    ></prediction-result>
-    <br />
-    <h3>
-      <em>{{ sequence ? "Antifouling Model" : "" }}</em>
-    </h3>
-    <prediction-result
-      id="antifouling-predict"
-      title="antifouling"
-      description="Prediciton of antifouling activity"
-      v-bind:prediction="prediction.antifouling"
-      v-bind:sequence="sequence"
-      :name="
-        prediction.antifouling.predict
-          ? 'Antifouling activity predicted.'
-          : 'No antifouling activity predicted.'
+        prediction.sol.predict
+          ? 'Soluble'
+          : 'Not soluble.'
       "
     >
-    </prediction-result>
+    <p>{{status}}</p>
   </div>
 </template>
 
 <script>
-import PredictionResult from "./PredictionResult";
-import axios from "axios";
+import TFResult from "./TFResult";
+import rnn from "../lib/rnn";
 export default {
-  name: "ServerPrediction",
-  components: { PredictionResult },
+  name: "TFPrediction",
+  components: { TFResult },
   props: {
     sequence: String,
-    port: String,
-    host: String,
+    status: String,
     width: {
       type: Number,
       default: 300,
     },
   },
+  mounted: function () {
+    rnn.startLoad();
+    this.status = "loading";
+  },
   data: function () {
     return {
-      prediction: { antifouling: {}, antimicrobial: {}, finished: false },
+      prediction: { sol: {}, finished: false },
     };
   },
   watch: {
@@ -62,18 +49,16 @@ export default {
   },
   methods: {
     makePrediction: async function (str) {
-      if (str.length >= 3) {
-        const response = await axios.get(
-          this.host + (this.port ? ":" + this.port : "") + "/predict/" + str
-        );
-        if ("prediction" in response.data) {
-          this.prediction.antifouling = response.data.prediction.antifouling;
-          this.prediction.antimicrobial =
-            response.data.prediction.antimicrobial;
+      this.status = rnn.model_loaded;
+      if (str.length >= 3 && this.status === 'loaded') {
+        const x = rnn.seq2vec(str);
+        const yhat = await rnn.model(x).array();
+        if (yhat) {
+          this.prediction.sol.score = yhat;
+          this.predictions.sol.predict = true ? yhat > 0 : false;
           this.prediction.finished = true;
         } else {
-          this.prediction.antifouling = {};
-          this.prediction.antimicrobial = {};
+          this.prediction.sol = {};
           this.prediction.finished = false;
         }
       }
