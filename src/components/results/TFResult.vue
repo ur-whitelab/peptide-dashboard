@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "PredictionResult",
+  name: "TfResult",
   props: {
     prediction: {
       accuracy: { type: Number, default: 0.0 },
@@ -30,7 +30,7 @@ export default {
     },
     sequence: String,
     name: String,
-  }
+  },
 };
 </script>
 

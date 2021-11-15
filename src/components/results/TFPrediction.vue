@@ -3,7 +3,7 @@
     <h3>
       <em>{{ sequence ? "Solubility Model" : "" }}</em>
     </h3>
-    <prediction-result
+    <tf-result
       id="sol-predict"
       title="sol"
       description="Prediciton of solubility"
@@ -20,22 +20,25 @@
 </template>
 
 <script>
-import TFResult from "./TFResult";
+import TfResult from "./TfResult";
 import rnn from "../lib/rnn";
 export default {
-  name: "TFPrediction",
-  components: { TFResult },
+  name: "TfPrediction",
+  components: { TfResult },
   props: {
     sequence: String,
-    status: String,
     width: {
       type: Number,
       default: 300,
     },
   },
+  data() {
+    return {
+      status: "loading",
+    };
+  },
   mounted: function () {
     rnn.startLoad();
-    this.status = "loading";
   },
   data: function () {
     return {
@@ -50,7 +53,7 @@ export default {
   methods: {
     makePrediction: async function (str) {
       this.status = rnn.model_loaded;
-      if (str.length >= 3 && this.status === 'loaded') {
+      if (str.length >= 3 && this.status === "loaded") {
         const x = rnn.seq2vec(str);
         const yhat = await rnn.model(x).array();
         if (yhat) {

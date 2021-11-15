@@ -84,11 +84,7 @@
                 <p class="card-header-subtitle is-size-5 is-spaced">
                   This is a statiscal model that uses descriptors + motifs
                 </p>
-                <server-prediction
-                  :sequence="sequence"
-                  port=""
-                  host="http://18.232.255.99"
-                ></server-prediction>
+                <tf-prediction :sequence="sequence"></tf-prediction>
               </div>
               <footer class="card-footer">
                 <reference
@@ -125,7 +121,7 @@
 import SequenceViewer from "./SequenceViewer";
 import Milton from "./results/Milton";
 import SequenceInput from "./SequenceInput";
-import ServerPrediction from "./results/ServerPrediction";
+import TfPrediction from "./results/TfPrediction";
 import Reference from "./Reference";
 
 export default {
@@ -133,7 +129,7 @@ export default {
   components: {
     SequenceViewer,
     Milton,
-    ServerPrediction,
+    TfPrediction,
     SequenceInput,
     Reference,
   },
