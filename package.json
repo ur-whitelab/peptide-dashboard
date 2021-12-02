@@ -10,16 +10,17 @@
   "author": "Andrew White",
   "license": "ISC",
   "dependencies": {
-    "@parcel/transformer-vue": "^2.0.0",
+    "@parcel/transformer-vue": "^2.0.1",
     "axios": "^0.24.0",
     "bulma": "^0.9.3",
     "d3": "^5.0.0",
     "lodash": "^4.17.21",
-    "parcel": "^2.0.0",
-    "vue": "^3.2.20"
+    "parcel": "^2.0.1",
+    "vue": "^3.2.20",
+    "@tensorflow/tfjs": "^3.8.0"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0",
+    "@parcel/transformer-sass": "^2.0.1",
     "eslint": "^8.2.0",
     "eslint-plugin-vue": "^8.0.3",
     "install": "^0.13.0"

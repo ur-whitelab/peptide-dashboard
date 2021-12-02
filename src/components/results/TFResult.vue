@@ -30,6 +30,7 @@ export default {
     },
     sequence: String,
     name: String,
+    title: String,
   },
 };
 </script>

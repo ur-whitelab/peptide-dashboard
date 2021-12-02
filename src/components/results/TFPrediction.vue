@@ -6,16 +6,12 @@
     <tf-result
       id="sol-predict"
       title="sol"
-      description="Prediciton of solubility"
+      description="Prediction of solubility"
       v-bind:prediction="prediction.sol"
       v-bind:sequence="sequence"
-      :name="
-        prediction.sol.predict
-          ? 'Soluble'
-          : 'Not soluble.'
-      "
-    >
-    <p>{{status}}</p>
+      v-bind:name="prediction.sol.predict ? 'Soluble' : 'Not soluble.'"
+    />
+    <p>{{ status }}</p>
   </div>
 </template>
 
@@ -42,7 +38,7 @@ export default {
   },
   data: function () {
     return {
-      prediction: { sol: {}, finished: false },
+      prediction: { sol: { predict: null }, finished: false },
     };
   },
   watch: {

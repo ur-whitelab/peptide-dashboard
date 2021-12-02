@@ -6,10 +6,10 @@
     <prediction-result
       id="antimicrobial-predict"
       title="antimicrobial"
-      description="Prediciton of antimicrobial activity"
+      description="Prediction of antimicrobial activity"
       v-bind:prediction="prediction.antimicrobial"
       v-bind:sequence="sequence"
-      :name="
+      v-bind:name="
         prediction.antimicrobial.predict
           ? 'Antimicrobial activity predicted.'
           : 'No antimicrobial activity predicted.'
@@ -22,7 +22,7 @@
     <prediction-result
       id="antifouling-predict"
       title="antifouling"
-      description="Prediciton of antifouling activity"
+      description="Prediction of antifouling activity"
       v-bind:prediction="prediction.antifouling"
       v-bind:sequence="sequence"
       :name="

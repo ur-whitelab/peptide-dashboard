@@ -160,7 +160,7 @@ section {
 }
 
 .tile {
-  padding: (0.75rem / 2);
+  padding: 0.38rem;
 }
 .card-footer {
   position: absolute;
