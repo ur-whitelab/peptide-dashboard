@@ -10,7 +10,10 @@ export default function getModel() {
 
     const rnn_mod = {
         startLoad: (url) => {
-            const loader = tf.loadLayersModel(url);
+            const loader = tf.loadLayersModel(url,
+                // not sure why, but seems to require this. It cannot
+                // determin which fetch to use otherwise
+                { fetchFunc: (path, rinit = RequestInit) => fetch(path, rinit) });
             loader.then((model) => {
                 rnn_mod.model = (t) => {
                     const yhat = model.predict(t);
