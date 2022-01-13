@@ -11,12 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@parcel/transformer-vue": "^2.0.1",
-    "@tensorflow/tfjs": "^3.13.0",
+    "@tensorflow/tfjs": "3.8.0",
     "axios": "^0.24.0",
     "bulma": "^0.9.3",
     "d3": "^5.0.0",
     "lodash": "^4.17.21",
-    "node-fetch": "^3.1.0",
     "parcel": "^2.0.1",
     "vue": "^3.2.20"
   },
