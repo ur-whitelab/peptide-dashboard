@@ -1,10 +1,6 @@
 <template>
   <div class="prediction-table">
     <table v-if="sequence" class="table">
-      <tr title="Accuracy on withheld data.">
-        <td>Model accuracy:</td>
-        <td class="rightalign">{{ prediction.accuracy }}</td>
-      </tr>
       <tr :title="name">
         <td>Predicted activity?</td>
         <td class="rightalign">{{ prediction.predict ? "Yes." : "No." }}</td>

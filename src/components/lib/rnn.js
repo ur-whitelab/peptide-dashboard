@@ -6,61 +6,64 @@ const stoi = {
 };
 const vocab = ['-', 'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'];
 
-const rnn_mod = {
-    startLoad: () => {
-        const loader = tf.loadLayersModel('https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/model.json');
-        loader.then((model) => {
-            rnn_mod.model = (t) => {
-                const yhat = model.predict(t);
-                return yhat
-            }
-            rnn_mod.model_loaded = 'loaded';
-        }, () => {
-            rnn_mod.model_loaded = 'failed';
-        }).catch((reason) => {
-            console.log('Failed to load model!');
-            console.log(reason);
-        });
-    }
-};
+export default function getModel(url) {
 
-rnn_mod.model_loaded = 'not loading';
-
-rnn_mod.resetStates = () => {
-    // placeholder, overwritten on load
-}
-
-rnn_mod.sample = (x, seed, T = 0.5, k = 1) => {
-    return tf.multinomial(
-        tf.mul(tf.scalar(1 / (T + 0.00001)), x), k, seed
-    );
-}
-
-rnn_mod.seq2vec = (s) => {
-    const result = Array()
-    const vec = tf.tensor(Array.from(s).map((e, i) => {
-        if (e)
-            parseInt(stoi[e]);
-    }));
-    return tf.reshape(vec, [1, -1]);
-}
-
-rnn_mod.initVec = () => {
-    return tf.tensor([0]);
-}
-
-rnn_mod.vec2seq = (v) => {
-    const out = v.array().then((x) => {
-        if (Array.isArray(x)) {
-            return x.map((e, i) => {
-                return vocab[parseInt(e)];
+    const rnn_mod = {
+        startLoad: () => {
+            const loader = tf.loadLayersModel(url);
+            loader.then((model) => {
+                rnn_mod.model = (t) => {
+                    const yhat = model.predict(t);
+                    return yhat
+                }
+                rnn_mod.model_loaded = 'loaded';
+            }, () => {
+                rnn_mod.model_loaded = 'failed';
+            }).catch((reason) => {
+                console.log('Failed to load model!');
+                console.log(reason);
             });
-        } else {
-            return [vocab[parseInt(x)]];
         }
-    });
+    };
 
-    return out;
+    rnn_mod.model_loaded = 'not loading';
+
+    rnn_mod.resetStates = () => {
+        // placeholder, overwritten on load
+    }
+
+    rnn_mod.sample = (x, seed, T = 0.5, k = 1) => {
+        return tf.multinomial(
+            tf.mul(tf.scalar(1 / (T + 0.00001)), x), k, seed
+        );
+    }
+
+    rnn_mod.seq2vec = (s) => {
+        const result = Array()
+        const vec = tf.tensor(Array.from(s).map((e, i) => {
+            if (e)
+                parseInt(stoi[e]);
+        }));
+        return tf.reshape(vec, [1, -1]);
+    }
+
+    rnn_mod.initVec = () => {
+        return tf.tensor([0]);
+    }
+
+    rnn_mod.vec2seq = (v) => {
+        const out = v.array().then((x) => {
+            if (Array.isArray(x)) {
+                return x.map((e, i) => {
+                    return vocab[parseInt(e)];
+                });
+            } else {
+                return [vocab[parseInt(x)]];
+            }
+        });
+
+        return out;
+    }
+    return rnn_mod
 }
 
-export default rnn_mod;

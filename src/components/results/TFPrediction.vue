@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h3>
-      <em>{{ sequence ? "Solubility Model" : "" }}</em>
-    </h3>
     <tf-result
       id="sol-predict"
       title="sol"
@@ -11,18 +8,22 @@
       v-bind:sequence="sequence"
       v-bind:name="prediction.sol.predict ? 'Soluble' : 'Not soluble.'"
     />
-    <p>{{ status }}</p>
+    <hr />
+    <model-card :url="this.url + '/card.json'"> </model-card>
   </div>
 </template>
 
 <script>
 import TfResult from "./TfResult";
-import rnn from "../lib/rnn";
+import getModel from "../lib/rnn";
+import ModelCard from "./ModelCard.vue";
+import _ from "lodash";
 export default {
   name: "TfPrediction",
-  components: { TfResult },
+  components: { TfResult, ModelCard },
   props: {
     sequence: String,
+    url: String,
     width: {
       type: Number,
       default: 300,
@@ -31,10 +32,12 @@ export default {
   data() {
     return {
       status: "loading",
+      rnn: null,
     };
   },
   mounted: function () {
-    rnn.startLoad();
+    this.rnn = getModel(this.url + "model.json");
+    this.rnn.startLoad();
   },
   data: function () {
     return {
@@ -42,16 +45,16 @@ export default {
     };
   },
   watch: {
-    sequence: function () {
+    sequence: _.debounce(function () {
       this.makePrediction(this.sequence);
-    },
+    }, 1000),
   },
   methods: {
     makePrediction: async function (str) {
-      this.status = rnn.model_loaded;
+      this.status = this.rnn.model_loaded;
       if (str.length >= 3 && this.status === "loaded") {
-        const x = rnn.seq2vec(str);
-        const yhat = await rnn.model(x).array();
+        const x = this.rnn.seq2vec(str);
+        const yhat = await this.rnn.model(x).array();
         if (yhat) {
           this.prediction.sol.score = yhat;
           this.prediction.sol.predict = true ? yhat > 0 : false;

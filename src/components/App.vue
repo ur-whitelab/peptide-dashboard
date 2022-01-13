@@ -5,7 +5,9 @@
         <div class="container">
           <div class="floating-hero">
             <span class="title">Peptide Dashboard</span><br />
-            <span class="subtitle"> The White Laboratory </span>
+            <span class="subtitle">
+              <a href="https://thewhitelab.org">thewhitelab.org</a>
+            </span>
           </div>
           <sequence-viewer
             :sequence="sequence"
@@ -15,6 +17,9 @@
           <div class="container"></div>
         </div>
       </div>
+    </section>
+    <section>
+      <version :version="version"></version>
     </section>
     <section>
       <div class="container">
@@ -74,24 +79,25 @@
           <div class="tile is-6 is-parent">
             <div class="card tile is-child">
               <header class="card-header">
-                <h3
-                  class="card-header-title is-size-4 is-spaced bd-anchor-title"
-                >
-                  Bayesian Network Predictions<sup>*</sup>
+                <h3 class="card-header-title is-size-4 is-spaced">
+                  Solubility Prediction<sup>*</sup>
                 </h3>
               </header>
               <div class="card-content">
                 <p class="card-header-subtitle is-size-5 is-spaced">
-                  This is a statistical model that uses descriptors + motifs
+                  Predicted solubility of given sequence
                 </p>
-                <tf-prediction :sequence="sequence"></tf-prediction>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
               </div>
               <footer class="card-footer">
                 <reference
-                  reflink="https://doi.org/10.1002/pep2.24079"
-                  reftitle="Classifying Antimicrobial and Multifunctional Peptides with Bayesian Network Models"
-                  journal="Peptide Science"
-                  year="2018"
+                  reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
+                  reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
+                  journal="J. Chem. Inf. Model."
+                  year="2021"
                 ></reference>
               </footer>
             </div>
@@ -118,11 +124,13 @@
 </template>
 
 <script>
+import Version from "./Version.vue";
 import SequenceViewer from "./SequenceViewer";
 import Milton from "./results/Milton";
 import SequenceInput from "./SequenceInput";
 import TfPrediction from "./results/TfPrediction";
 import Reference from "./Reference";
+import pjson from "../../package.json";
 
 export default {
   name: "App",
@@ -132,12 +140,14 @@ export default {
     TfPrediction,
     SequenceInput,
     Reference,
+    Version,
   },
   data() {
     return {
       sequence: "",
       viewWidth: 800,
       selectedIndex: -1,
+      version: pjson["version"],
     };
   },
   mounted: function () {
