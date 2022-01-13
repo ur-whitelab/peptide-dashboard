@@ -8,7 +8,7 @@ const vocab = ['-', 'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 
 
 const rnn_mod = {
     startLoad: () => {
-        const loader = tf.loadLayersModel('https://raw.githubusercontent.com/whitead/molecule-dream/main/static/model/model.json');
+        const loader = tf.loadLayersModel('https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/model.json');
         loader.then((model) => {
             rnn_mod.model = (t) => {
                 const yhat = model.predict(t);
@@ -17,6 +17,9 @@ const rnn_mod = {
             rnn_mod.model_loaded = 'loaded';
         }, () => {
             rnn_mod.model_loaded = 'failed';
+        }).catch((reason) => {
+            console.log('Failed to load model!');
+            console.log(reason);
         });
     }
 };
