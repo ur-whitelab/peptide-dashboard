@@ -1,4 +1,7 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs-core';
+import { loadLayersModel } from '@tensorflow/tfjs-layers';
+import '@tensorflow/tfjs-backend-webgl';
+
 
 const stoi = {
     "A": 1, "R": 2, "N": 3, "D": 4, "C": 5, "Q": 6, "E": 7, "G": 8, "H": 9, "I": 10,
@@ -10,7 +13,7 @@ export default function getModel() {
 
     const rnn_mod = {
         startLoad: (url) => {
-            const loader = tf.loadLayersModel(url,
+            const loader = loadLayersModel(url,
                 // not sure why, but seems to require this. It cannot
                 // determin which fetch to use otherwise
                 { fetchFunc: (path, rinit = RequestInit) => fetch(path, rinit) });
