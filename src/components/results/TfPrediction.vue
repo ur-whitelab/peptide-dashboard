@@ -36,8 +36,8 @@ export default {
     };
   },
   mounted: function () {
-    this.rnn = getModel(this.url + "model.json");
-    this.rnn.startLoad();
+    this.rnn = getModel();
+    this.rnn.startLoad(this.url + "model.json");
   },
   data: function () {
     return {

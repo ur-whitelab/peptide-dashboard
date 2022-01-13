@@ -6,10 +6,10 @@ const stoi = {
 };
 const vocab = ['-', 'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'];
 
-export default function getModel(url) {
+export default function getModel() {
 
     const rnn_mod = {
-        startLoad: () => {
+        startLoad: (url) => {
             const loader = tf.loadLayersModel(url);
             loader.then((model) => {
                 rnn_mod.model = (t) => {
