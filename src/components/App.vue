@@ -82,7 +82,7 @@
               </header>
               <div class="card-content">
                 <p class="card-header-subtitle is-size-5 is-spaced">
-                  This is a statiscal model that uses descriptors + motifs
+                  This is a statistical model that uses descriptors + motifs
                 </p>
                 <tf-prediction :sequence="sequence"></tf-prediction>
               </div>
