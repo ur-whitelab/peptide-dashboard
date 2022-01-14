@@ -15,7 +15,7 @@
 
 <script>
 import TfResult from "./TfResult";
-import getModel from "../lib/rnn";
+import getModel from "../lib/tf-models";
 import ModelCard from "./ModelCard.vue";
 import _ from "lodash";
 export default {
@@ -52,7 +52,7 @@ export default {
   methods: {
     makePrediction: async function (str) {
       this.status = this.rnn.model_loaded;
-      if (str.length >= 3 && this.status === "loaded") {
+      if (str.length >= 1 && this.status === "loaded") {
         const x = this.rnn.seq2vec(str);
         const yhat = await this.rnn.model(x).array();
         if (yhat) {
