@@ -1,7 +1,7 @@
 <template>
   <div class="prediction-table">
-    <table v-if="sequence" class="table">
-      <tr :title="name">
+    <table v-if="ready" class="table">
+      <tr>
         <td>Predicted activity?</td>
         <td class="rightalign">{{ prediction.predict ? "Yes." : "No." }}</td>
       </tr>
@@ -12,6 +12,9 @@
         </td>
       </tr>
     </table>
+    <p v-else class="has-text-danger">
+      Waiting for model to load and non-empty sequence
+    </p>
   </div>
 </template>
 
@@ -24,8 +27,7 @@ export default {
       predict: { type: Boolean, default: false },
       score: { type: Number, default: 0.0 },
     },
-    sequence: String,
-    name: String,
+    ready: Boolean,
     title: String,
   },
 };

@@ -1,12 +1,10 @@
 <template>
   <div>
     <tf-result
-      id="sol-predict"
       title="sol"
       description="Prediction of solubility"
       v-bind:prediction="prediction.sol"
-      v-bind:sequence="sequence"
-      v-bind:name="prediction.sol.predict ? 'Soluble' : 'Not soluble.'"
+      v-bind:ready="this.prediction.finished"
     />
     <hr />
     <model-card :url="this.url + '/card.json'"> </model-card>
@@ -35,6 +33,9 @@ export default {
       rnn: null,
     };
   },
+  created: function () {
+    this.debouncedPredict = _.debounce(this.predict, 1000);
+  },
   mounted: function () {
     this.rnn = getModel();
     this.rnn.startLoad(this.url + "model.json");
@@ -45,12 +46,13 @@ export default {
     };
   },
   watch: {
-    sequence: _.debounce(function () {
-      this.makePrediction(this.sequence);
-    }, 1000),
+    sequence: function (new_value) {
+      this.debouncedPredict(new_value);
+    },
   },
   methods: {
-    makePrediction: async function (str) {
+    predict: async function (str) {
+      console.log("Starting in model " + this.url);
       this.status = this.rnn.model_loaded;
       if (str.length >= 1 && this.status === "loaded") {
         const x = this.rnn.seq2vec(str);

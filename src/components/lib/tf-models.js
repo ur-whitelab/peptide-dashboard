@@ -25,6 +25,7 @@ export default function getModel() {
                     return yhat
                 }
                 rnn_mod.model_loaded = 'loaded';
+                console.log('Loaded Model: ' + url)
             }, (reason) => {
                 rnn_mod.model_loaded = 'failed';
                 console.log('Failed to load model!');

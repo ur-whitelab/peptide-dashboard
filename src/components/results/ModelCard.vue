@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="model-card">
     <h4 class="is-size-4">Model Card</h4>
     <div class="tabs is-boxed">
       <ul>
@@ -23,6 +23,10 @@
 }
 .tabs li {
   width: 50%;
+}
+
+.model-card {
+  padding-bottom: 2rem;
 }
 </style>
 

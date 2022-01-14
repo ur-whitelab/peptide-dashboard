@@ -121,12 +121,21 @@
                 ></tf-prediction>
               </div>
               <footer class="card-footer">
-                <reference
-                  reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
-                  reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
-                  journal="Pep. Sci."
-                  year="2018"
-                ></reference>
+                <div>
+                  <reference
+                    reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
+                    reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
+                    journal="Pep. Sci."
+                    year="2018"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://doi.org/10.1039/C2SC21135A"
+                    reftitle="Decoding nonspecific interactions from nature"
+                    journal="Chem. Sci."
+                    year="2012"
+                  ></reference>
+                </div>
               </footer>
             </div>
           </div>
