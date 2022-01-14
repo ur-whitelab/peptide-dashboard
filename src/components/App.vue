@@ -93,19 +93,28 @@
                 ></tf-prediction>
               </div>
               <footer class="card-footer">
-                <reference
-                  reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
-                  reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
-                  journal="J. Chem. Inf. Model."
-                  year="2021"
-                ></reference>
+                <div>
+                  <reference
+                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
+                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
+                    journal="J. Chem. Inf. Model."
+                    year="2021"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://febs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1742-4658.2012.08603.x"
+                    reftitle="PROSO II–a new method for protein solubility prediction"
+                    journal="The FEBS journal "
+                    year="2012"
+                  ></reference>
+                </div>
               </footer>
             </div>
           </div>
         </div>
         <div class="tile is-ancestor">
-          <div class="tile is-parent">
-            <div class="card is-6 tile is-child">
+          <div class="tile is-6 is-parent">
+            <div class="card tile is-child">
               <header class="card-header">
                 <h3 class="card-header-title is-size-4 is-spaced">
                   Nonfouling Prediction
@@ -134,6 +143,41 @@
                     reftitle="Decoding nonspecific interactions from nature"
                     journal="Chem. Sci."
                     year="2012"
+                  ></reference>
+                </div>
+              </footer>
+            </div>
+          </div>
+          <div class="tile is-6 is-parent">
+            <div class="card tile is-child">
+              <header class="card-header">
+                <h3 class="card-header-title is-size-4 is-spaced">
+                  Hemolytic Prediction
+                </h3>
+              </header>
+              <div class="card-content">
+                <p class="card-header-subtitle is-size-5 is-spaced">
+                  Predicted ability for peptide to kill red blood cells
+                </p>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
+              </div>
+              <footer class="card-footer">
+                <div>
+                  <reference
+                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
+                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
+                    journal="J. Chem. Inf. Model."
+                    year="2021"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://academic.oup.com/nar/article-abstract/44/D1/D1087/2503090"
+                    reftitle="APD3: the antimicrobial peptide database as a tool for research and education."
+                    journal="Nucleic acids research"
+                    year="2016"
                   ></reference>
                 </div>
               </footer>
