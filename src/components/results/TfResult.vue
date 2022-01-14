@@ -1,6 +1,13 @@
 <template>
   <div class="prediction-table">
-    <table v-if="ready" class="table">
+    <table
+      v-if="ready"
+      class="table"
+      :class="{
+        'has-background-success': prediction.predict,
+        'has-background-warning': !prediction.predict,
+      }"
+    >
       <tr>
         <td>Predicted activity?</td>
         <td class="rightalign">{{ prediction.predict ? "Yes." : "No." }}</td>

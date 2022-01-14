@@ -59,7 +59,7 @@ export default {
         const yhat = await this.rnn.model(x).array();
         if (yhat) {
           this.prediction.sol.score = yhat;
-          this.prediction.sol.predict = true ? yhat > 0 : false;
+          this.prediction.sol.predict = true ? yhat > 0.5 : false;
           this.prediction.finished = true;
         } else {
           this.prediction.sol = {};
