@@ -226,6 +226,7 @@ section {
 .ref-footer {
   @media screen and (min-width: 1024px) {
     position: absolute;
+    margin-bottom: 1rem;
     bottom: 0rem;
   }
   @media screen and (max-width: 1023px) {

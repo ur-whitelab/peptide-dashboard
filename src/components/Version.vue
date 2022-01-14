@@ -2,7 +2,7 @@
   <div v-if="show" class="container">
     <article class="message is-warning">
       <div class="message-header">
-        <p>This is science in progress!</p>
+        <p>Important Note</p>
         <button
           @click="show = false"
           class="delete"
@@ -11,9 +11,10 @@
       </div>
       <div class="message-body">
         <strong> Version: {{ version }}</strong> You are viewing an early
-        version of an upcoming research paper. The models and predictions shown
-        here should be viewed for entertainment purposes only. Come back often
-        for newer versions.
+        version of ongoing research. The models and predictions shown here are
+        based on models that are incomplete. I have made this accessible to
+        gather feedback and engage other experts in peptide chemistry. Please
+        come back often for newer versions.
       </div>
     </article>
   </div>
