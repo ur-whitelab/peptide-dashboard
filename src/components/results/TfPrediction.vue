@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tf-prediction">
     <tf-result
       title="sol"
       description="Prediction of solubility"
@@ -10,6 +10,9 @@
     <model-card :url="this.url + '/card.json'"> </model-card>
   </div>
 </template>
+
+<style>
+</style>
 
 <script>
 import TfResult from "./TfResult";

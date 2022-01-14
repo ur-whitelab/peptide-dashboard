@@ -1,6 +1,6 @@
 <template>
   <div class="model-card">
-    <div class="container">
+    <div class="container has-text-justified">
       <template v-for="item in details" :key="item.id">
         <p>
           <strong>{{ item.name }}</strong>
