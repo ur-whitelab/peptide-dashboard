@@ -44,8 +44,8 @@ export default {
         { id: "metrics", name: "Metrics", class: "" },
         { id: "evaluation", name: "Evaluation Data", class: "" },
         { id: "training", name: "Training Data", class: "" },
-        { id: "caveats", name: "Ethical Considerations", class: "" },
-        { id: "ethics", name: "Caveats", class: "" },
+        { id: "ethics", name: "Ethical Considerations", class: "" },
+        { id: "caveats", name: "Caveats", class: "" },
       ],
       content: null,
     };

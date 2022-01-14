@@ -16,7 +16,7 @@ export default function getModel() {
         startLoad: (url) => {
             const loader = loadLayersModel(url,
                 // not sure why, but seems to require this. It cannot
-                // determin which fetch to use otherwise
+                // determine which fetch to use otherwise
                 { fetchFunc: (path, rinit = RequestInit) => fetch(path, rinit) });
 
             loader.then((model) => {
@@ -38,41 +38,13 @@ export default function getModel() {
 
     rnn_mod.model_loaded = 'not loading';
 
-    rnn_mod.resetStates = () => {
-        // placeholder, overwritten on load
-    }
-
-    rnn_mod.sample = (x, seed, T = 0.5, k = 1) => {
-        return tf.multinomial(
-            tf.mul(tf.scalar(1 / (T + 0.00001)), x), k, seed
-        );
-    }
-
     rnn_mod.seq2vec = (s) => {
         const result = Array()
         const vec = tf.tensor(Array.from(s).map((e, i) => {
             if (e)
-                parseInt(stoi[e]);
+                return parseInt(stoi[e.toUpperCase()]);
         }));
         return tf.reshape(vec, [1, -1]);
-    }
-
-    rnn_mod.initVec = () => {
-        return tf.tensor([0]);
-    }
-
-    rnn_mod.vec2seq = (v) => {
-        const out = v.array().then((x) => {
-            if (Array.isArray(x)) {
-                return x.map((e, i) => {
-                    return vocab[parseInt(e)];
-                });
-            } else {
-                return [vocab[parseInt(x)]];
-            }
-        });
-
-        return out;
     }
     return rnn_mod
 }
