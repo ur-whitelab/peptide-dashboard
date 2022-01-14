@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@parcel/transformer-vue": "^2.0.1",
-    "@tensorflow/tfjs": "3.12.0",
+    "@tensorflow/tfjs": "3.13.0",
     "axios": "^0.24.0",
     "bulma": "^0.9.3",
     "d3": "^5.0.0",

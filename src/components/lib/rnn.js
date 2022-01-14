@@ -1,6 +1,8 @@
 import * as tf from '@tensorflow/tfjs-core';
 import { loadLayersModel } from '@tensorflow/tfjs-layers';
 import '@tensorflow/tfjs-backend-webgl';
+import '@tensorflow/tfjs-backend-cpu';
+
 
 
 const stoi = {
