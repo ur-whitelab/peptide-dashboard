@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     predict: async function (str) {
-      console.log("Starting in model " + this.url);
       this.status = this.rnn.model_loaded;
       if (str.length >= 1 && this.status === "loaded") {
         const x = this.rnn.seq2vec(str);

@@ -1,27 +1,24 @@
 <template>
   <div class="prediction-table">
     <table
-      v-if="ready"
       class="table"
       :class="{
-        'has-background-success': prediction.predict,
-        'has-background-warning': !prediction.predict,
+        'has-background-success': ready && prediction.predict,
+        'has-background-warning': ready && !prediction.predict,
+        'has-background-grey': !ready,
       }"
     >
       <tr>
         <td>Predicted activity?</td>
-        <td class="rightalign">{{ prediction.predict ? "Yes." : "No." }}</td>
+        <td class="rightalign">{{ display }}</td>
       </tr>
       <tr title="Fraction of cutoff likelihood.">
         <td>Probability of Active:</td>
         <td class="rightalign">
-          {{ parseFloat(prediction.score).toFixed(2) }}
+          {{ score }}
         </td>
       </tr>
     </table>
-    <p v-else class="has-text-danger">
-      Waiting for model to load and non-empty sequence
-    </p>
   </div>
 </template>
 
@@ -36,6 +33,17 @@ export default {
     },
     ready: Boolean,
     title: String,
+  },
+  computed: {
+    display: function () {
+      if (this.ready && this.prediction.predict) return "Yes";
+      if (this.ready && !this.prediction.predict) return "No.";
+      return "...";
+    },
+    score: function () {
+      if (this.ready) return parseFloat(this.prediction.score).toFixed(2);
+      return "...";
+    },
   },
 };
 </script>

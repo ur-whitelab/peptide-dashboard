@@ -44,6 +44,96 @@
         <div class="tile is-ancestor">
           <div class="tile is-6 is-parent">
             <div class="card tile is-child">
+              <div class="card-content">
+                <h3 class="title is-size-4">Hemolytic Prediction</h3>
+                <h6 class="subtitle is-size-6">
+                  Predicted ability for peptide to kill red blood cells
+                </h6>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
+                <footer class="block">
+                  <reference
+                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
+                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
+                    journal="J. Chem. Inf. Model."
+                    year="2021"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://academic.oup.com/nar/article-abstract/44/D1/D1087/2503090"
+                    reftitle="APD3: the antimicrobial peptide database as a tool for research and education."
+                    journal="Nucleic acids research"
+                    year="2016"
+                  ></reference>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <div class="tile is-6 is-parent">
+            <div class="card tile is-child">
+              <div class="card-content">
+                <h3 class="title is-size-4">Solubility Prediction</h3>
+                <h6 class="subtitle is-size-6">
+                  Predicted solubility of given sequence
+                </h6>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
+                <footer class="block">
+                  <reference
+                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
+                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
+                    journal="J. Chem. Inf. Model."
+                    year="2021"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://febs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1742-4658.2012.08603.x"
+                    reftitle="PROSO II–a new method for protein solubility prediction"
+                    journal="The FEBS journal "
+                    year="2012"
+                  ></reference>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-ancestor">
+          <div class="tile is-6 is-parent">
+            <div class="card tile is-child">
+              <div class="card-content">
+                <h3 class="title is-size-4">Nonfouling Prediction</h3>
+                <h6 class="subtitle is-size-6">
+                  Predicted ability to resist non-specific interactions
+                </h6>
+                <p class="card-header-subtitle is-size-5 is-spaced"></p>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
+                <footer class="block">
+                  <reference
+                    reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
+                    reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
+                    journal="Pep. Sci."
+                    year="2018"
+                  ></reference>
+                  <br />
+                  <reference
+                    reflink="https://doi.org/10.1039/C2SC21135A"
+                    reftitle="Decoding nonspecific interactions from nature"
+                    journal="Chem. Sci."
+                    year="2012"
+                  ></reference>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <div class="tile is-6 is-parent">
+            <div class="card tile is-child">
               <header class="card-header">
                 <h3
                   class="card-header-title is-size-4 is-spaced bd-anchor-title"
@@ -61,126 +151,19 @@
                   :sequence="sequence"
                   :selectedIndex="selectedIndex"
                 ></milton>
+                <footer class="block">
+                  <reference
+                    reflink="https://pubs.acs.org/doi/abs/10.1021/ja00172a020"
+                    reftitle="Prediction of difficult sequences in solid-phase peptide synthesis"
+                    journal="J. Am. Chem. Soc."
+                    year="1990"
+                    volume="112"
+                    issue="16"
+                    pages="6039-6046"
+                    doi="10.1021/ja00172a020"
+                  ></reference>
+                </footer>
               </div>
-              <footer class="card-footer">
-                <reference
-                  reflink="https://pubs.acs.org/doi/abs/10.1021/ja00172a020"
-                  reftitle="Prediction of difficult sequences in solid-phase peptide synthesis"
-                  journal="J. Am. Chem. Soc."
-                  year="1990"
-                  volume="112"
-                  issue="16"
-                  pages="6039-6046"
-                  doi="10.1021/ja00172a020"
-                ></reference>
-              </footer>
-            </div>
-          </div>
-          <div class="tile is-6 is-parent">
-            <div class="card tile is-child">
-              <header class="card-header">
-                <h3 class="card-header-title is-size-4 is-spaced">
-                  Solubility Prediction
-                </h3>
-              </header>
-              <div class="card-content">
-                <p class="card-header-subtitle is-size-5 is-spaced">
-                  Predicted solubility of given sequence
-                </p>
-                <tf-prediction
-                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
-                  :sequence="sequence"
-                ></tf-prediction>
-              </div>
-              <footer class="card-footer">
-                <div>
-                  <reference
-                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
-                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
-                    journal="J. Chem. Inf. Model."
-                    year="2021"
-                  ></reference>
-                  <br />
-                  <reference
-                    reflink="https://febs.onlinelibrary.wiley.com/doi/abs/10.1111/j.1742-4658.2012.08603.x"
-                    reftitle="PROSO II–a new method for protein solubility prediction"
-                    journal="The FEBS journal "
-                    year="2012"
-                  ></reference>
-                </div>
-              </footer>
-            </div>
-          </div>
-        </div>
-        <div class="tile is-ancestor">
-          <div class="tile is-6 is-parent">
-            <div class="card tile is-child">
-              <header class="card-header">
-                <h3 class="card-header-title is-size-4 is-spaced">
-                  Nonfouling Prediction
-                </h3>
-              </header>
-              <div class="card-content">
-                <p class="card-header-subtitle is-size-5 is-spaced">
-                  Predicted ability to resist non-specific interactions
-                </p>
-                <tf-prediction
-                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
-                  :sequence="sequence"
-                ></tf-prediction>
-              </div>
-              <footer class="card-footer">
-                <div>
-                  <reference
-                    reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
-                    reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
-                    journal="Pep. Sci."
-                    year="2018"
-                  ></reference>
-                  <br />
-                  <reference
-                    reflink="https://doi.org/10.1039/C2SC21135A"
-                    reftitle="Decoding nonspecific interactions from nature"
-                    journal="Chem. Sci."
-                    year="2012"
-                  ></reference>
-                </div>
-              </footer>
-            </div>
-          </div>
-          <div class="tile is-6 is-parent">
-            <div class="card tile is-child">
-              <header class="card-header">
-                <h3 class="card-header-title is-size-4 is-spaced">
-                  Hemolytic Prediction
-                </h3>
-              </header>
-              <div class="card-content">
-                <p class="card-header-subtitle is-size-5 is-spaced">
-                  Predicted ability for peptide to kill red blood cells
-                </p>
-                <tf-prediction
-                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
-                  :sequence="sequence"
-                ></tf-prediction>
-              </div>
-              <footer class="card-footer">
-                <div>
-                  <reference
-                    reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
-                    reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
-                    journal="J. Chem. Inf. Model."
-                    year="2021"
-                  ></reference>
-                  <br />
-                  <reference
-                    reflink="https://academic.oup.com/nar/article-abstract/44/D1/D1087/2503090"
-                    reftitle="APD3: the antimicrobial peptide database as a tool for research and education."
-                    journal="Nucleic acids research"
-                    year="2016"
-                  ></reference>
-                </div>
-              </footer>
             </div>
           </div>
         </div>

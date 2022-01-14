@@ -1,9 +1,9 @@
-import {event, select} from 'd3-selection'
-import {forceSimulation, forceManyBody, forceCenter, forceLink, forceX, forceY} from 'd3-force'
-import {drag} from 'd3-drag'
+import { event, select } from 'd3-selection'
+import { forceSimulation, forceManyBody, forceCenter, forceLink, forceX, forceY } from 'd3-force'
+import { drag } from 'd3-drag'
 
 class SequenceD3 {
-  constructor (canvas, selectionListener) {
+  constructor(canvas, selectionListener) {
     this.canvas = canvas
     this.context = canvas.getContext('2d')
     this.width = canvas.width
@@ -48,8 +48,8 @@ class SequenceD3 {
     this.update('')
   }
 
-  update (sequence) {
-    this.nodes = sequence.split('').map((x, i) => { return {name: x, id: i, y: 0, x: i * this.width / sequence.length - this.width / 2} })
+  update(sequence) {
+    this.nodes = sequence.split('').map((x, i) => { return { name: x, id: i, y: 0, x: i * this.width / sequence.length - this.width / 2 } })
     // keep data for existing nodes
 
     // give new one a kick
@@ -73,13 +73,13 @@ class SequenceD3 {
     // update forces
     this.simulation.nodes(this.nodes)
     this.simulation.force('center').x(this.width / 2)
-    this.links = this.simulation.nodes().slice(0, -1).map((n, i) => { return {source: i, target: i + 1} })
+    this.links = this.simulation.nodes().slice(0, -1).map((n, i) => { return { source: i, target: i + 1 } })
     this.simulation.force('link').links(this.links)
     this.simulation.force('link').distance(this.width / this.nodes.length)
     this.simulation.alphaTarget(0.3).restart()
   }
 
-  ticked () {
+  ticked() {
     this.context.clearRect(0, 0, this.width, this.height)
 
     this.context.beginPath()
@@ -104,7 +104,7 @@ class SequenceD3 {
     // hanlde selection
     if (this.selected >= 0) {
       this.context.beginPath()
-      this.context.fillStyle = '#FF3434'
+      this.context.fillStyle = '#F79256'
       this.context.moveTo(this.nodes[this.selected] + this.radius, this.nodes[this.selected].y)
       this.context.arc(this.nodes[this.selected].x, this.nodes[this.selected].y, this.radius, 0, 2 * Math.PI)
       this.context.fill()

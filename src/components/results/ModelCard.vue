@@ -1,18 +1,13 @@
 <template>
   <div class="model-card">
-    <h4 class="is-size-4">Model Card</h4>
-    <div class="tabs is-boxed">
-      <ul>
-        <template v-for="item in details" :key="item.id">
-          <li :class="item.class">
-            <a :id="'a-' + item.id" @click="tabUpdate">{{ item.name }}</a>
-          </li>
-        </template>
-      </ul>
+    <div class="container">
+      <template v-for="item in details" :key="item.id">
+        <p>
+          <strong>{{ item.name }}</strong>
+          {{ cardContent(item.id) }}
+        </p>
+      </template>
     </div>
-    <p>
-      {{ content }}
-    </p>
   </div>
 </template>
 <style scoped>
@@ -26,7 +21,7 @@
 }
 
 .model-card {
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 }
 </style>
 
@@ -42,14 +37,14 @@ export default {
       card: null,
       title: "",
       details: [
-        { id: "details", name: "Model Details", class: "is-active" },
-        { id: "use", name: "Intended Use", class: "" },
-        { id: "factors", name: "Factors", class: "" },
-        { id: "metrics", name: "Metrics", class: "" },
-        { id: "evaluation", name: "Evaluation Data", class: "" },
-        { id: "training", name: "Training Data", class: "" },
-        { id: "ethics", name: "Ethical Considerations", class: "" },
-        { id: "caveats", name: "Caveats", class: "" },
+        { id: "details", name: "Model Details" },
+        { id: "use", name: "Intended Use" },
+        { id: "factors", name: "Factors" },
+        { id: "metrics", name: "Metrics" },
+        { id: "evaluation", name: "Evaluation Data" },
+        { id: "training", name: "Training Data" },
+        { id: "ethics", name: "Ethical Considerations" },
+        { id: "caveats", name: "Caveats" },
       ],
       content: null,
     };
@@ -64,15 +59,11 @@ export default {
       });
   },
   methods: {
-    tabUpdate(event) {
-      const id = event.target.id.split("a-")[1];
-      const new_details = this.details.map((v) => {
-        v.class = "";
-        if (v.id == id) v.class = "is-active";
-        return { ...v };
-      });
-      this.details = new_details;
-      this.content = this.card[id];
+    cardContent(id) {
+      if (this.card && id in this.card) {
+        return this.card[id];
+      }
+      return "";
     },
   },
 };
