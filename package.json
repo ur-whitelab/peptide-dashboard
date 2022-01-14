@@ -5,7 +5,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url ./"
+    "build": "parcel build src/index.html --no-cache --no-scope-hoist --public-url ./"
   },
   "author": "Andrew White",
   "license": "ISC",

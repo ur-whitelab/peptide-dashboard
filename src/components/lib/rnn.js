@@ -1,8 +1,7 @@
 import * as tf from '@tensorflow/tfjs-core';
 import { loadLayersModel } from '@tensorflow/tfjs-layers';
+import '@tensorflow/tfjs-backend-webgl';
 import '@tensorflow/tfjs-backend-cpu';
-// import '@tensorflow/tfjs-backend-webgl';
-
 
 
 
@@ -13,13 +12,13 @@ const stoi = {
 const vocab = ['-', 'A', 'R', 'N', 'D', 'C', 'Q', 'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V'];
 
 export default function getModel() {
-
     const rnn_mod = {
         startLoad: (url) => {
             const loader = loadLayersModel(url,
                 // not sure why, but seems to require this. It cannot
                 // determin which fetch to use otherwise
                 { fetchFunc: (path, rinit = RequestInit) => fetch(path, rinit) });
+
             loader.then((model) => {
                 rnn_mod.model = (t) => {
                     const yhat = model.predict(t);
@@ -33,7 +32,7 @@ export default function getModel() {
             }).catch((reason) => {
                 console.log('Failed to load model!');
                 console.log(reason);
-            });
+            })
         }
     };
 
