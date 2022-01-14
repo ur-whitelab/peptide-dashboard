@@ -103,6 +103,34 @@
             </div>
           </div>
         </div>
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <div class="card is-6 tile is-child">
+              <header class="card-header">
+                <h3 class="card-header-title is-size-4 is-spaced">
+                  Nonfouling Prediction
+                </h3>
+              </header>
+              <div class="card-content">
+                <p class="card-header-subtitle is-size-5 is-spaced">
+                  Predicted ability to resist non-specific interactions
+                </p>
+                <tf-prediction
+                  url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
+                  :sequence="sequence"
+                ></tf-prediction>
+              </div>
+              <footer class="card-footer">
+                <reference
+                  reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
+                  reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
+                  journal="Pep. Sci."
+                  year="2018"
+                ></reference>
+              </footer>
+            </div>
+          </div>
+        </div>
         <div class="tile">
           <footer>(c) Andrew White, 2022</footer>
           <!-- Add content or other tiles -->
