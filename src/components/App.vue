@@ -52,7 +52,7 @@
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
                 :sequence="sequence"
               ></tf-prediction>
-              <footer class="block">
+              <div class="ref-footer">
                 <reference
                   reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
                   reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
@@ -66,7 +66,7 @@
                   journal="Nucleic acids research"
                   year="2016"
                 ></reference>
-              </footer>
+              </div>
             </div>
           </div>
           <div class="card column">
@@ -79,7 +79,7 @@
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
                 :sequence="sequence"
               ></tf-prediction>
-              <footer class="block">
+              <div class="ref-footer">
                 <reference
                   reflink="https://pubs.acs.org/doi/10.1021/acs.jcim.0c00946"
                   reftitle="Investigating Active Learning and Meta-Learning for Iterative Peptide Design"
@@ -93,7 +93,7 @@
                   journal="The FEBS journal "
                   year="2012"
                 ></reference>
-              </footer>
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
                 :sequence="sequence"
               ></tf-prediction>
-              <footer class="block">
+              <div class="ref-footer">
                 <reference
                   reflink="https://onlinelibrary.wiley.com/doi/abs/10.1002/pep2.24079"
                   reftitle="Classifying antimicrobial and multifunctional peptides with Bayesian network models"
@@ -123,7 +123,7 @@
                   journal="Chem. Sci."
                   year="2012"
                 ></reference>
-              </footer>
+              </div>
             </div>
           </div>
           <div class="card column">
@@ -142,7 +142,7 @@
                 :sequence="sequence"
                 :selectedIndex="selectedIndex"
               ></milton>
-              <footer class="block">
+              <div class="ref-footer">
                 <reference
                   reflink="https://pubs.acs.org/doi/abs/10.1021/ja00172a020"
                   reftitle="Prediction of difficult sequences in solid-phase peptide synthesis"
@@ -153,7 +153,7 @@
                   pages="6039-6046"
                   doi="10.1021/ja00172a020"
                 ></reference>
-              </footer>
+              </div>
             </div>
           </div>
         </div>
@@ -213,8 +213,8 @@ export default {
   z-index: 2;
 }
 
-.columns {
-  margin-right: 1rem;
+.column {
+  margin: 1rem;
 }
 section {
   margin-bottom: 1.5em;
@@ -223,12 +223,14 @@ section {
 .tile {
   padding: 0.38rem;
 }
-.card-footer {
-  position: absolute;
-  bottom: 0rem;
-}
-footer {
-  position: absolute;
-  bottom: 0rem;
+.ref-footer {
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    bottom: 0rem;
+  }
+  @media screen and (max-width: 1023px) {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
 </style>

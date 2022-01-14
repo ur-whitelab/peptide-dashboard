@@ -21,7 +21,7 @@
 }
 
 .model-card {
-  padding-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 </style>
 
