@@ -80,7 +80,7 @@
             <div class="card tile is-child">
               <header class="card-header">
                 <h3 class="card-header-title is-size-4 is-spaced">
-                  Solubility Prediction<sup>*</sup>
+                  Solubility Prediction
                 </h3>
               </header>
               <div class="card-content">
@@ -104,18 +104,7 @@
           </div>
         </div>
         <div class="tile">
-          <footer>
-            <small
-              ><sup>*</sup>Datasets:
-              <a href="http://aps.unmc.edu/AP/main.php"
-                >Antimicrobial Peptide Database</a
-              >,
-              <a
-                href="http://pubs.rsc.org/en/content/articlehtml/2012/sc/c2sc21135a"
-                >Antifouling Dataset (White et al.)</a
-              ></small
-            >
-          </footer>
+          <footer>(c) Andrew White, 2022</footer>
           <!-- Add content or other tiles -->
         </div>
       </div>
