@@ -51,6 +51,7 @@
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
                 :sequence="sequence"
+                adjective="hemolytic"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference
@@ -78,6 +79,7 @@
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
                 :sequence="sequence"
+                adjective="soluble"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference
@@ -108,6 +110,7 @@
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
                 :sequence="sequence"
+                adjective="nonfouling"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference

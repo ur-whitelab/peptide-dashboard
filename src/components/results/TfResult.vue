@@ -9,11 +9,11 @@
       }"
     >
       <tr>
-        <td>Predicted activity?</td>
+        <td>{{ adjective }}</td>
         <td class="rightalign">{{ display }}</td>
       </tr>
       <tr title="Fraction of cutoff likelihood.">
-        <td>Probability of Active:</td>
+        <td>probability</td>
         <td class="rightalign">
           {{ score }}
         </td>
@@ -33,16 +33,17 @@ export default {
     },
     ready: Boolean,
     title: String,
+    adjective: String,
   },
   computed: {
     display: function () {
-      if (this.ready && this.prediction.predict) return "Yes";
-      if (this.ready && !this.prediction.predict) return "No.";
-      return "...";
+      if (this.ready && this.prediction.predict) return "yes";
+      if (this.ready && !this.prediction.predict) return "no";
+      return "-";
     },
     score: function () {
       if (this.ready) return parseFloat(this.prediction.score).toFixed(2);
-      return "...";
+      return "-";
     },
   },
 };

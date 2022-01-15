@@ -4,7 +4,8 @@
       title="sol"
       description="Prediction of solubility"
       v-bind:prediction="prediction.sol"
-      v-bind:ready="this.prediction.finished"
+      v-bind:ready="prediction.finished"
+      :adjective="adjective"
     />
     <hr />
     <model-card :url="this.url + '/card.json'"> </model-card>
@@ -25,6 +26,7 @@ export default {
   props: {
     sequence: String,
     url: String,
+    adjective: String,
     width: {
       type: Number,
       default: 300,
@@ -50,6 +52,7 @@ export default {
   },
   watch: {
     sequence: function (new_value) {
+      this.prediction.finished = false;
       this.debouncedPredict(new_value);
     },
   },
