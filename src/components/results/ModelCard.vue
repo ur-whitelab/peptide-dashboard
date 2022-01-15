@@ -3,7 +3,7 @@
     <div class="container has-text-justified">
       <template v-for="item in details" :key="item.id">
         <p>
-          <strong>{{ item.name }}</strong>
+          <strong>{{ item.name }}.</strong>
           {{ cardContent(item.id) }}
         </p>
       </template>
@@ -21,7 +21,7 @@
 }
 
 .model-card {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 </style>
 

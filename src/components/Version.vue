@@ -14,8 +14,7 @@
         version of ongoing research. The models and predictions shown here are
         based on models that are incomplete. I have made this accessible to
         gather feedback and engage other experts in peptide chemistry. Please
-        come back often for newer versions. <br />
-        See the source code and "watch" the
+        come back often for newer versions. See the source code and "watch" the
         <a href="https://github.com/ur-whitelab/peptide-dashboard"
           >github repo</a
         >
