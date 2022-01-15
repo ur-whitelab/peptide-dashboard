@@ -61,10 +61,10 @@
                 ></reference>
                 <br />
                 <reference
-                  reflink="https://academic.oup.com/nar/article-abstract/44/D1/D1087/2503090"
-                  reftitle="APD3: the antimicrobial peptide database as a tool for research and education."
-                  journal="Nucleic acids research"
-                  year="2016"
+                  reflink="https://doi.org/10.1093/nar/gkaa991"
+                  reftitle="DBAASP v3: database of antimicrobial/cytotoxic activity and structure of peptides as a resource for development of new therapeutics"
+                  journal="Nucleic Acids Research"
+                  year="2020"
                 ></reference>
               </div>
             </div>
