@@ -1,6 +1,6 @@
 {
     "title": "Hemolytic Prediction",
-    "details": "Recurrent (LSTM) neural network for predicting if a peptide is hemolytic. Developed by Andrew White using data from The Database of Antimicrobial Activity and Structure of Peptides (DBAASP). The activity cutoff from dose response curves is 25 micrograms / ml. A positive prediction means the peptide is predicted to have hemolytic activity below that cutoff.",
+    "details": "Recurrent (bi-LSTM) neural network for predicting if a peptide is hemolytic. Developed by Andrew White using data from The Database of Antimicrobial Activity and Structure of Peptides (DBAASP). The activity cutoff from dose response curves is 25 micrograms / ml. A positive prediction means the peptide is predicted to have hemolytic activity below that cutoff.",
     "use": "Peptides between 2 and 190 residues. L-chirality and canonical  amino acids",
     "factors": "Dataset was from sequences thought to be antimicrobial or clinically relevant",
     "metrics": "Test accuracy 0.90. Test AUC 0.81",
