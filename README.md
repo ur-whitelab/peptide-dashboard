@@ -1,7 +1,7 @@
 Peptide Dashboard
 =====
 
-https://peptide.bio
+[peptide.bio](https://peptide.bio)
 
 
 TODO
