@@ -4,7 +4,7 @@
       <div class="hero-body" style="padding: 0px">
         <div class="container">
           <div class="floating-hero">
-            <span class="title">Peptide Dashboard</span><br />
+            <span class="title">peptide.bio</span><br />
             <span class="subtitle">
               <a href="https://thewhitelab.org">thewhitelab.org</a>
             </span>
