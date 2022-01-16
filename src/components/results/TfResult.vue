@@ -53,7 +53,7 @@ export default {
     },
     score: function () {
       if (this.ready)
-        return parseFloat(this.prediction.score).toFixed(2) * 100 + "%";
+        return parseFloat(this.prediction.score * 100).toFixed(0) + "%";
       return " ";
     },
   },

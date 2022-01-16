@@ -68,7 +68,7 @@ class SequenceD3 {
     // Have upper/lower bound for sizes
     this.radius = Math.min(50, Math.max(7, 250 / (this.nodes.length + 1)))
     this.simulation.force('repel').distanceMax(this.radius * 2)
-    this.context.font = `${Math.round(Math.max(10, 72 / Math.sqrt(1 + this.nodes.length)))}px sans-serif`
+    this.context.font = `${Math.round(Math.max(10, 72 / Math.sqrt(1 + this.nodes.length)))}px "Courier Prime", monospace`
 
     // update forces
     this.simulation.nodes(this.nodes)
