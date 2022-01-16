@@ -1,6 +1,6 @@
 {
     "title": "Solubility Prediction",
-    "details": "Recurrent (bi-LSTM) neural network for predicting solubility. Developed by Andrew White using data from PROSO II database in TFJS.",
+    "details": "Recurrent (bi-LSTM) neural network for predicting solubility. Developed by Andrew White using data from PROSO II database.",
     "use": "Peptides or proteins expressed in E. coli that are less than 200 residues long. May provide solubility predictions more broadly applicable.",
     "factors": "Solubility was defined in PROSO II as sequence that was transfectible, expressible, secretable, separable, and soluble in E. coli system.",
     "metrics": "Test accuracy 0.68. Test AUC 0.74",
