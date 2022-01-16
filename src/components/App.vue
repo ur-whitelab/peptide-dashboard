@@ -5,9 +5,7 @@
         <div class="container">
           <div class="floating-hero">
             <span class="title">peptide.bio</span><br />
-            <span class="subtitle">
-              <a href="https://thewhitelab.org">thewhitelab.org</a>
-            </span>
+            <span class="subtitle"> v{{ version }} </span>
           </div>
           <sequence-viewer
             :sequence="sequence"
@@ -46,7 +44,7 @@
             <div class="card-content">
               <h3 class="title is-size-4">Hemolytic Prediction</h3>
               <h6 class="subtitle is-size-6">
-                Predicted ability for peptide to kill red blood cells
+                Predicted ability for peptide to lyse red blood cells
               </h6>
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
