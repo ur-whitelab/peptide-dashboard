@@ -1,36 +1,23 @@
 // 1. Import the initial variables
 @import "npm:bulma/sass/utilities/initial-variables.sass";
 @import "npm:bulma/sass/utilities/functions.sass";
-@import "npm:bulma/sass/utilities/mixins.sass";
 //@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
-// 2. Set your own initial variables
-// Update blue
-$blue: #72d0eb;
-// Add pink and its invert
-$pink: #7DCFB6;
-$pink-invert: #fff;
-// Add a serif family
 $family-sans: "IBM Plex Sans Condensed", sans-serif;
 $family-mono: 'Courier Prime', monospace;
-$body-background-color: #EEEEEE;
+// old paper background
+$body-background-color: #f4f0e8;
 
-// 3. Set the derived variables
-// Use the new pink as the primary color
 $primary: #7DCFB6;
-$primary-invert: #fff;
 // Use the existing orange as the danger color
 $danger: $orange;
 $warning: #FBD1A2;
-$info: #2D7AB9;
+$info: #416165;//#2D7AB9;
 $family-primary: $family-mono;
 $shadow: "";
 $card-shadow: "";
 $card-header-shadow: "";
 
-// 5. Add new color variables to the color map.
-@import "npm:bulma/sass/utilities/derived-variables.sass";
-
 // 6. Import the rest of Bulma
-@import "~bulma/bulma.sass";
+@import "npm:bulma/bulma.sass";

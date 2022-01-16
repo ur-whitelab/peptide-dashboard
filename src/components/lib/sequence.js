@@ -87,7 +87,7 @@ class SequenceD3 {
       this.context.moveTo(d.x, d.y)
       this.context.lineTo(this.nodes[i + 1].x, this.nodes[i + 1].y)
     })
-    this.context.strokeStyle = '#aaa'
+    this.context.strokeStyle = '#416165;'
     this.context.stroke()
 
     this.context.beginPath()
@@ -98,7 +98,7 @@ class SequenceD3 {
     // remove lines inside the cirlce
     this.context.fillStyle = '#FFF'
     this.context.fill()
-    this.context.strokeStyle = '#666'
+    this.context.strokeStyle = '#416165'
     this.context.stroke()
 
     // hanlde selection

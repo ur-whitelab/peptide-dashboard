@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="container">
-    <article class="message is-warning">
+    <article class="message is-info">
       <div class="message-header">
         <p>Important Note</p>
         <button

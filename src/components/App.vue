@@ -227,6 +227,8 @@ section {
   padding: 0.38rem;
 }
 .ref-footer {
+  padding-right: 1.5rem;
+  text-align: justify;
   @media screen and (min-width: 1024px) {
     position: absolute;
     margin-bottom: 1rem;
