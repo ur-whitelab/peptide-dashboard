@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       scatter: new Scatter(),
-      delay: 2,
+      delay: 0,
     };
   },
   mounted: function () {
