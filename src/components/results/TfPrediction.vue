@@ -3,11 +3,11 @@
     <tf-result
       title="sol"
       description="Prediction of solubility"
-      v-bind:prediction="prediction.sol"
+      v-bind:prediction="prediction"
       v-bind:ready="prediction.finished"
       :adjective="adjective"
     />
-    <hr />
+    <br />
     <model-card :url="this.url + '/card.json'"> </model-card>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
   },
   data: function () {
     return {
-      prediction: { sol: { predict: null }, finished: false },
+      prediction: { score: null, predict: false, finished: false },
     };
   },
   watch: {
@@ -63,11 +63,12 @@ export default {
         const x = this.rnn.seq2vec(str);
         const yhat = await this.rnn.model(x).array();
         if (yhat) {
-          this.prediction.sol.score = yhat;
-          this.prediction.sol.predict = true ? yhat > 0.5 : false;
+          this.prediction.score = yhat;
+          this.prediction.predict = yhat > 0.5;
           this.prediction.finished = true;
         } else {
-          this.prediction.sol = {};
+          this.prediction.score = null;
+          this.prediction.predict = false;
           this.prediction.finished = false;
         }
       }

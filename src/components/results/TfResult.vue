@@ -5,19 +5,25 @@
       :class="{
         'has-background-success': ready && prediction.predict,
         'has-background-warning': ready && !prediction.predict,
-        'has-background-grey': !ready,
+        'has-background-white-ter': !ready,
       }"
     >
-      <tr>
-        <td>{{ adjective }}</td>
-        <td class="rightalign">{{ display }}</td>
-      </tr>
-      <tr title="Fraction of cutoff likelihood.">
-        <td>probability</td>
-        <td class="rightalign">
-          {{ score }}
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td class="has-text-right">{{ display }}</td>
+          <td class="has-text-left">
+            {{
+              ready
+                ? adjective
+                : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+            }}
+          </td>
+        </tr>
+        <tr title="probability">
+          <td class="has-text-right">{{ score }}&nbsp;</td>
+          <td class="has-text-left"><span v-if="ready">probability</span></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -27,7 +33,6 @@ export default {
   name: "TfResult",
   props: {
     prediction: {
-      accuracy: { type: Number, default: 0.0 },
       predict: { type: Boolean, default: false },
       score: { type: Number, default: 0.0 },
     },
@@ -37,22 +42,25 @@ export default {
   },
   computed: {
     display: function () {
-      if (this.ready && this.prediction.predict) return "yes";
-      if (this.ready && !this.prediction.predict) return "no";
-      return "-";
+      if (this.ready) {
+        if (this.prediction.score >= 0.9) return "is";
+        if (this.prediction.score >= 0.7) return "likely";
+        if (this.prediction.score >= 0.4) return "weakly";
+        if (this.prediction.score >= 0.1) return "unlikely";
+        return "not";
+      }
+      return "";
     },
     score: function () {
-      if (this.ready) return parseFloat(this.prediction.score).toFixed(2);
-      return "-";
+      if (this.ready)
+        return parseFloat(this.prediction.score).toFixed(2) * 100 + "%";
+      return " ";
     },
   },
 };
 </script>
 
 <style lang="scss">
-.rightalign {
-  text-align: right;
-}
 .uppercase {
   text-transform: uppercase;
 }
