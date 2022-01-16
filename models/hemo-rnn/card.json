@@ -1,11 +1,1 @@
-{
-    "title": "Hemolytic Prediction",
-    "details": "Recurrent (bi-LSTM) neural network for predicting if a peptide is hemolytic. Developed by Andrew White using data from The Database of Antimicrobial Activity and Structure of Peptides (DBAASP). The activity is defined from dose response curves point at which 50% of RBCs are lysed. If activity is below 25 μg / ml, it is hemolytic.",
-    "use": "Peptides between 2 and 190 residues. L-chirality and canonical  amino acids",
-    "factors": "Dataset was from sequences thought to be antimicrobial or clinically relevant",
-    "metrics": "Test accuracy 0.90. Test AUC 0.81",
-    "evaluation": "Withheld positive and negative examples",
-    "training": "9316 positive and negative sequences. Only L chirality and canonical amino acids were trained.",
-    "caveats": "The sequences tested were typically from biological sources.",
-    "ethics": "These predictions are not a substitute for labratory experiments."
-}
+{"title": "Hemolytic Prediction", "details": "Recurrent (bi-LSTM) neural network for predicting if a peptide is hemolytic. Developed by Andrew White using data from The Database of Antimicrobial Activity and Structure of Peptides (DBAASP). The activity is defined from by extrapolating from a measurement assuming a dose response curves to the point at which 50% of RBCs are lysed.  If activity is below 100 \u03bcg / ml, it is hemolytic. Each measurement is treated independently, so sequences can appear multiple times.", "use": "Peptides between 2 and 190 residues. L- and canonical  amino acids", "factors": "Dataset was from sequences thought to be antimicrobial or clinically relevant", "metrics": "Test accuracy 0.83. Test AUC 0.84", "evaluation": "Withheld positive and negative examples", "training": "9316 positive and negative sequences. Only L- and canonical amino acids were trained.", "caveats": "The sequences tested were typically from biological sources.", "ethics": "These predictions are not a substitute for labratory experiments."}
