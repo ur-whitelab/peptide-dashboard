@@ -1,33 +1,45 @@
 <template>
-  <input id="sequence" class="input" spellcheck="false"
-  autocorrect="off" type="text" placeholder="Peptide Sequence"
-  v-model="internalSequence" @keydown="onKeyDown" @keyup="lastKeyCode = 0">
+  <input
+    id="sequence"
+    class="input"
+    spellcheck="false"
+    autocorrect="off"
+    type="text"
+    placeholder="Peptide Sequence"
+    v-model="internalSequence"
+    autofocus
+    @keydown="onKeyDown"
+    @keyup="lastKeyCode = 0"
+  />
 </template>
 
 <script>
 // https://stackoverflow.com/questions/46289311/vue-limit-characters-in-text-area-input-truncate-filter
 export default {
-  name: 'SequenceInput',
-  data () {
+  name: "SequenceInput",
+  data() {
     return {
-      sequence: '',
-      pattern: 'acdefghiklmnpqrstvwyACDEFGHIKLMNPQRSTVWY',
-      lastKeyCode: 0
-    }
+      sequence: "",
+      pattern: "acdefghiklmnpqrstvwyACDEFGHIKLMNPQRSTVWY",
+      lastKeyCode: 0,
+    };
   },
   mounted: function () {
     // convert pattern to list of integers
-    this.pattern = this.pattern.split('').map((x) => { return x.charCodeAt(0) })
+    this.pattern = this.pattern.split("").map((x) => {
+      return x.charCodeAt(0);
+    });
   },
   computed: {
     internalSequence: {
-      get: function () { return this.sequence },
+      get: function () {
+        return this.sequence;
+      },
       set: function (v) {
-        this.sequence = v
-        this.$emit('sequence-update', v)
-      }
-
-    }
+        this.sequence = v;
+        this.$emit("sequence-update", v);
+      },
+    },
   },
   methods: {
     onKeyDown: function (evt) {
@@ -36,15 +48,15 @@ export default {
       if (evt.keyCode >= 48 && evt.keyCode <= 90) {
         // check for ctrl, so we don't eat hot keys
         if (this.lastKeyCode !== 17 && this.pattern.indexOf(evt.keyCode) < 0)
-          evt.preventDefault()
+          evt.preventDefault();
       } else if (evt.keyCode >= 186 || evt.keyCode === 32) {
         // punctuation and space
-        evt.preventDefault()
+        evt.preventDefault();
       }
-      this.lastKeyCode = evt.keyCode
-    }
-  }
-}
+      this.lastKeyCode = evt.keyCode;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
