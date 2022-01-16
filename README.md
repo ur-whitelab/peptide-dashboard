@@ -7,6 +7,6 @@ Peptide Dashboard
 TODO
 ====
 
-1. Calibrate
+1. Calibrate (too difficult for JS I think)
 2. Swap with PU
 3. Add counterfactuals
