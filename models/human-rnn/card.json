@@ -1,6 +1,6 @@
 {
     "title": "Nonfouling Prediction",
-    "details": "Recurrent (LSTM) neural network for predicting resistance to non-specific interactions (nonfouling). Developed by Andrew White using data from Barrett 2018. Negative examples are insoluble peptides, hemolytic peptides, and scrambled positives. Sample weights were used to remove negative example dataset sizes",
+    "details": "Recurrent (LSTM) neural network for predicting resistance to non-specific interactions (nonfouling). Developed by Andrew White using data from Barrett 2018. Negative examples are insoluble peptides, hemolytic peptides, and scrambled positives. Sample weights were used to remove negative example dataset size effect",
     "use": "Short peptides between 2 and 20 residues",
     "factors": "The dataset was gathered based on mechanism proposed in White 2012.",
     "metrics": "Test accuracy 0.85. Test AUC 0.93",

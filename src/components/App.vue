@@ -164,7 +164,15 @@
       <div class="container">
         <div class="columns">
           <div class="block column">
-            <p>(c) Andrew White, 2022</p>
+            <p>
+              (c) <a href="https://twitter.com/andrewwhite01">Andrew White</a>,
+              2022
+            </p>
+            <p>
+              &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://thewhitelab.org"
+                >thewhitelab.org</a
+              >
+            </p>
           </div>
         </div>
       </div>
