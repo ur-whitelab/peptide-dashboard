@@ -4,7 +4,6 @@
       class="table"
       :class="{
         'has-background-success': ready && prediction.predict,
-        'has-text-light': ready && prediction.predict,
         'has-background-warning': ready && !prediction.predict,
         'has-background-white-ter': !ready,
       }"
