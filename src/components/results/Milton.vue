@@ -21,6 +21,11 @@ export default {
       delay: 0,
     };
   },
+  created: function () {
+    this.debouncedProcess = _.debounce(function (v) {
+      this.scatter.plot(v, this.delay);
+    }, 1500);
+  },
   mounted: function () {
     this.scatter.draw(
       this.$refs.scatter,
@@ -31,12 +36,10 @@ export default {
     );
   },
   watch: {
-    sequence: _.debounce(function (s) {
-      this.scatter.plot(
-        this.processSequence(this.sequence, miltonData),
-        this.delay
-      );
-    }, 1500),
+    sequence: function (s) {
+      const v = this.processSequence(s, miltonData);
+      this.debouncedProcess(v);
+    },
   },
   methods: {
     processSequence: function (str, data) {
@@ -49,6 +52,7 @@ export default {
 
         values.push([i + 1, sum / (i + 1)]);
       }
+      this.$emit("synthesis-update", parseFloat(sum / str.length).toFixed(2));
       return values;
     },
   },

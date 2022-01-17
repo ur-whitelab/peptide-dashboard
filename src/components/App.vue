@@ -44,6 +44,7 @@
                     <td>Hemolytic</td>
                     <td>Soluble</td>
                     <td>Nonfouling</td>
+                    <td>Synthesis</td>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,6 +57,7 @@
                       <td>{{ item.hemolytic }}</td>
                       <td>{{ item.soluble }}</td>
                       <td>{{ item.nonfouling }}</td>
+                      <td>{{ item.synthesis }}</td>
                     </tr>
                   </template>
                 </tbody>
@@ -66,7 +68,7 @@
                 id="results-button"
                 class="button is-info is-small"
                 :href="blob"
-                download="peptide.json"
+                download="peptide.csv"
               >
                 Download
               </a>
@@ -183,6 +185,7 @@
               <milton
                 :sequence="sequence"
                 :selectedIndex="selectedIndex"
+                v-on:synthesis-update="synthesis = $event"
               ></milton>
               <div class="ref-footer">
                 <reference
@@ -249,6 +252,7 @@ export default {
       nonfouling: null,
       hemolytic: null,
       soluble: null,
+      synthesis: null,
       past: [],
     };
   },
@@ -260,9 +264,17 @@ export default {
       return screen;
     },
     blob() {
+      // get string of results table
+      const tableText = this.past
+        .map(
+          (v) =>
+            `${v.sequence},${v.hemolytic},${v.soluble},${v.nonfouling},${v.synthesis}`
+        )
+        .join("\n");
+      const headerText = "Sequence,Hemolytic,Soluble,Nonfouling,Synthesis\n";
       // Create a blob of the data
-      const blob = new Blob([JSON.stringify(this.past)], {
-        type: "application/json",
+      const blob = new Blob([headerText + tableText + "\n"], {
+        type: "text/csv",
       });
 
       return window.URL.createObjectURL(blob);
@@ -270,12 +282,13 @@ export default {
   },
   methods: {
     pushSequence() {
-      if (this.hemolytic && this.soluble && this.nonfouling) {
+      if (this.hemolytic && this.soluble && this.nonfouling && this.synthesis) {
         this.past.push({
           sequence: this.sequence,
           hemolytic: this.hemolytic,
           soluble: this.soluble,
           nonfouling: this.nonfouling,
+          synthesis: this.synthesis,
         });
       }
     },
