@@ -33,7 +33,7 @@
                 </sequence-input>
               </div>
               <div class="control">
-                <a class="button is-info" @click="pushSequence"> Enter </a>
+                <a class="button is-info" @click="pushSequence"> Save </a>
               </div>
             </div>
             <div class="block">
@@ -292,5 +292,6 @@ section {
 
 .results-table {
   background-color: #f4f0e8;
+  overflow-x: auto;
 }
 </style>
