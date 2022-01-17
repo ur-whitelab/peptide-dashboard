@@ -30,6 +30,14 @@ export default {
     this.pattern = this.pattern.split("").map((x) => {
       return x.charCodeAt(0);
     });
+    const queryParam = new URLSearchParams(window.location.search).get("s");
+    if (queryParam) {
+      // clean it up
+      this.internalSequence = queryParam.replace(
+        /[^acdefghiklmnpqrstvwyACDEFGHIKLMNPQRSTVWY]/g,
+        ""
+      );
+    }
   },
   computed: {
     internalSequence: {
