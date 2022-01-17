@@ -22,20 +22,12 @@
     <section>
       <div class="container">
         <div class="columns is-centered">
-          <div class="column">
-            <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
-            <div class="field has-addons">
-              <div ref="sequencecontainer" class="control is-expanded">
-                <sequence-input
-                  v-on:sequence-update="sequence = $event"
-                  v-on:sequence-push="pushSequence"
-                >
-                </sequence-input>
-              </div>
-              <div class="control">
-                <a class="button is-info" @click="pushSequence"> Save </a>
-              </div>
-            </div>
+          <div ref="sequencecontainer" class="column">
+            <sequence-input
+              v-on:sequence-update="sequence = $event"
+              v-on:sequence-push="pushSequence"
+            >
+            </sequence-input>
             <div class="block results-block" v-if="past.length > 0">
               <table class="table results-table">
                 <thead>

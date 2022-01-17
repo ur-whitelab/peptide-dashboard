@@ -1,17 +1,34 @@
 <template>
-  <input
-    id="sequence"
-    class="input"
-    spellcheck="false"
-    autocorrect="off"
-    type="text"
-    placeholder="Peptide Sequence"
-    v-model="internalSequence"
-    autofocus
-    @keydown="onKeyDown"
-    @keyup="lastKeyCode = 0"
-    @keyup.enter="finishSequence"
-  />
+  <div>
+    <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <input
+          id="sequence"
+          class="input"
+          spellcheck="false"
+          autocorrect="off"
+          type="text"
+          placeholder="Peptide Sequence"
+          v-model="internalSequence"
+          autofocus
+          @keydown="onKeyDown"
+          @keyup="lastKeyCode = 0"
+          @keyup.enter="finishSequence"
+        />
+      </div>
+      <div class="control">
+        <a class="button is-info" @click="finishSequence"> Save </a>
+      </div>
+    </div>
+    <p id="seq-link" v-if="sequence.length > 0" class="help is-pulled-right">
+      Permanent Link:
+      <a :href="'https://peptide.bio?s=' + sequence" target="_blank">{{
+        "peptide.bio?s=" + sequence
+      }}</a>
+    </p>
+    <br />
+  </div>
 </template>
 
 <script>
@@ -74,5 +91,13 @@ export default {
 <style lang="scss">
 #sequence {
   text-transform: uppercase;
+}
+
+#seq-link {
+  max-height: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 </style>
