@@ -53,6 +53,7 @@ export default {
   watch: {
     sequence: function (new_value) {
       this.prediction.finished = false;
+      this.$emit(this.adjective + "-update", null);
       this.debouncedPredict(new_value);
     },
   },
@@ -66,6 +67,10 @@ export default {
           this.prediction.score = yhat;
           this.prediction.predict = yhat > 0.5;
           this.prediction.finished = true;
+          this.$emit(
+            this.adjective + "-update",
+            parseFloat(yhat * 100).toFixed(0) + "%"
+          );
         } else {
           this.prediction.score = null;
           this.prediction.predict = false;

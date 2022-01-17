@@ -10,6 +10,7 @@
     autofocus
     @keydown="onKeyDown"
     @keyup="lastKeyCode = 0"
+    @keyup.enter="finishSequence"
   />
 </template>
 
@@ -54,6 +55,9 @@ export default {
         evt.preventDefault();
       }
       this.lastKeyCode = evt.keyCode;
+    },
+    finishSequence: function () {
+      this.$emit("sequence-push");
     },
   },
 };

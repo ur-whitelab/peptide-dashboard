@@ -26,12 +26,37 @@
             <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
             <div class="field has-addons">
               <div ref="sequencecontainer" class="control is-expanded">
-                <sequence-input v-on:sequence-update="sequence = $event">
+                <sequence-input
+                  v-on:sequence-update="sequence = $event"
+                  v-on:sequence-push="pushSequence"
+                >
                 </sequence-input>
               </div>
               <div class="control">
-                <a class="button is-info"> Enter </a>
+                <a class="button is-info" @click="pushSequence"> Enter </a>
               </div>
+            </div>
+            <div class="block">
+              <table class="table results-table" v-if="past.length > 0">
+                <thead>
+                  <tr>
+                    <td>Sequence</td>
+                    <td>Hemolytic</td>
+                    <td>Soluble</td>
+                    <td>Nonfouling</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template v-for="item in past" :key="item.sequence">
+                    <tr>
+                      <td class="is-uppercase">{{ item.sequence }}</td>
+                      <td>{{ item.hemolytic }}</td>
+                      <td>{{ item.soluble }}</td>
+                      <td>{{ item.nonfouling }}</td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -43,13 +68,14 @@
           <div class="column card">
             <div class="card-content">
               <h3 class="title is-size-4">Hemolytic Prediction</h3>
-              <h6 class="subtitle is-size-6">
+              <h4 class="subtitle is-size-6">
                 Predicted ability for peptide to lyse red blood cells
-              </h6>
+              </h4>
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/hemo-rnn/"
                 :sequence="sequence"
                 adjective="hemolytic"
+                v-on:hemolytic-update="hemolytic = $event"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference
@@ -71,13 +97,14 @@
           <div class="card column">
             <div class="card-content">
               <h3 class="title is-size-4">Solubility Prediction</h3>
-              <h6 class="subtitle is-size-6">
+              <h4 class="subtitle is-size-6">
                 Predicted solubility of given sequence
-              </h6>
+              </h4>
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/sol-rnn/"
                 :sequence="sequence"
                 adjective="soluble"
+                v-on:soluble-update="soluble = $event"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference
@@ -101,14 +128,15 @@
           <div class="card column">
             <div class="card-content">
               <h3 class="title is-size-4">Nonfouling Prediction</h3>
-              <h6 class="subtitle is-size-6">
+              <h4 class="subtitle is-size-6">
                 Predicted ability to resist non-specific interactions
-              </h6>
+              </h4>
               <p class="card-header-subtitle is-size-5 is-spaced"></p>
               <tf-prediction
                 url="https://raw.githubusercontent.com/ur-whitelab/peptide-dashboard/master/models/human-rnn/"
                 :sequence="sequence"
                 adjective="nonfouling"
+                v-on:nonfouling-update="nonfouling = $event"
               ></tf-prediction>
               <div class="ref-footer">
                 <reference
@@ -205,10 +233,26 @@ export default {
       viewWidth: 800,
       selectedIndex: -1,
       version: pjson["version"],
+      nonfouling: null,
+      hemolytic: null,
+      soluble: null,
+      past: [],
     };
   },
   mounted: function () {
     this.viewWidth = this.$refs.sequencecontainer.offsetWidth;
+  },
+  methods: {
+    pushSequence() {
+      if (this.hemolytic && this.soluble && this.nonfouling) {
+        this.past.push({
+          sequence: this.sequence,
+          hemolytic: this.hemolytic,
+          soluble: this.soluble,
+          nonfouling: this.nonfouling,
+        });
+      }
+    },
   },
 };
 </script>
@@ -244,5 +288,9 @@ section {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+.results-table {
+  background-color: #f4f0e8;
 }
 </style>
