@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-primary is-bold">
+    <section class="hero is-primary is-bold" v-if="screen.width > 760">
       <div class="hero-body" style="padding: 0px">
         <div class="container">
           <div class="floating-hero">
@@ -36,8 +36,8 @@
                 <a class="button is-info" @click="pushSequence"> Save </a>
               </div>
             </div>
-            <div class="block">
-              <table class="table results-table" v-if="past.length > 0">
+            <div class="block results-block" v-if="past.length > 0">
+              <table class="table results-table">
                 <thead>
                   <tr>
                     <td>Sequence</td>
@@ -47,9 +47,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <template v-for="item in past" :key="item.sequence">
+                  <template
+                    v-for="item in past.slice().reverse()"
+                    :key="item.sequence"
+                  >
                     <tr>
-                      <td class="is-uppercase">{{ item.sequence }}</td>
+                      <td>{{ item.sequence }}</td>
                       <td>{{ item.hemolytic }}</td>
                       <td>{{ item.soluble }}</td>
                       <td>{{ item.nonfouling }}</td>
@@ -57,6 +60,16 @@
                   </template>
                 </tbody>
               </table>
+            </div>
+            <div v-if="past.length > 0" class="control">
+              <a
+                id="results-button"
+                class="button is-info is-small"
+                :href="blob"
+                download="peptide.json"
+              >
+                Download
+              </a>
             </div>
           </div>
         </div>
@@ -242,6 +255,19 @@ export default {
   mounted: function () {
     this.viewWidth = this.$refs.sequencecontainer.offsetWidth;
   },
+  computed: {
+    screen() {
+      return screen;
+    },
+    blob() {
+      // Create a blob of the data
+      const blob = new Blob([JSON.stringify(this.past)], {
+        type: "application/json",
+      });
+
+      return window.URL.createObjectURL(blob);
+    },
+  },
   methods: {
     pushSequence() {
       if (this.hemolytic && this.soluble && this.nonfouling) {
@@ -292,6 +318,30 @@ section {
 
 .results-table {
   background-color: #f4f0e8;
+  text-align: center;
+}
+
+.results-table th:last-child,
+.results-table td:last-child {
+  text-align: right;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  @media screen and (min-width: 1024px) {
+    max-width: 20rem;
+  }
+  @media screen and (max-width: 1023px) {
+    max-width: 10rem;
+  }
+}
+
+.results-block {
   overflow-x: auto;
+  max-height: 15rem;
+  overflow-y: auto;
 }
 </style>

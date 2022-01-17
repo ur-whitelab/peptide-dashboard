@@ -37,8 +37,8 @@ export default {
         return this.sequence;
       },
       set: function (v) {
-        this.sequence = v;
-        this.$emit("sequence-update", v);
+        this.sequence = v.toUpperCase();
+        this.$emit("sequence-update", v.toUpperCase());
       },
     },
   },
