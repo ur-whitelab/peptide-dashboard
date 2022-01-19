@@ -18,7 +18,13 @@
         />
       </div>
       <div class="control">
-        <a class="button is-info" @click="finishSequence"> Save </a>
+        <a
+          class="button is-info"
+          :class="{ 'is-loading': !ready && sequence.length > 0 }"
+          @click="finishSequence"
+        >
+          Save
+        </a>
       </div>
     </div>
     <p id="seq-link" v-if="sequence.length > 0" class="help is-pulled-right">
@@ -35,6 +41,9 @@
 // https://stackoverflow.com/questions/46289311/vue-limit-characters-in-text-area-input-truncate-filter
 export default {
   name: "SequenceInput",
+  props: {
+    ready: false,
+  },
   data() {
     return {
       sequence: "",

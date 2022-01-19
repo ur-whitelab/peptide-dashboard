@@ -26,6 +26,7 @@
             <sequence-input
               v-on:sequence-update="sequence = $event"
               v-on:sequence-push="pushSequence"
+              :ready="resultsReady"
             >
             </sequence-input>
             <div class="block results-block" v-if="past.length > 0">
@@ -271,10 +272,15 @@ export default {
 
       return window.URL.createObjectURL(blob);
     },
+    resultsReady() {
+      return (
+        this.hemolytic && this.soluble && this.nonfouling && this.synthesis
+      );
+    },
   },
   methods: {
     pushSequence() {
-      if (this.hemolytic && this.soluble && this.nonfouling && this.synthesis) {
+      if (this.resultsReady) {
         this.past.push({
           sequence: this.sequence,
           hemolytic: this.hemolytic,
