@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence</h1>
+    <h1 class="is-size-4 is-spaced bd-anchor-title">Enter Sequence (N to C)</h1>
     <div class="field has-addons">
       <div class="control is-expanded">
         <input

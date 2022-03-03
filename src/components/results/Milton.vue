@@ -31,7 +31,7 @@ export default {
       this.$refs.scatter,
       this.$refs.parent.offsetWidth * 0.7,
       400,
-      "Position",
+      "Position (N to C)",
       "Relative Ease of Synthesis"
     );
   },
@@ -45,14 +45,18 @@ export default {
     processSequence: function (str, data) {
       var values = [];
       var sum = 0.0;
+      // read it C -> N
       for (var i = 0, len = str.length; i < len; i++) {
-        var c = str[i].toUpperCase();
+        var c = str[len - 1 - i].toUpperCase();
         if (data.hasOwnProperty(c)) sum += data[c];
         else sum += 1.0;
 
         values.push([i + 1, sum / (i + 1)]);
       }
+      //reverse it back to N -> C
+      values.reverse();
       this.$emit("synthesis-update", parseFloat(sum / str.length).toFixed(2));
+
       return values;
     },
   },
