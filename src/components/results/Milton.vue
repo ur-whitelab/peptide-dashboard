@@ -2,10 +2,14 @@
   <div ref="parent">
     <div ref="scatter"></div>
   </div>
-  <p> Relative ease of synthesis is "inversely proportional
-      to the probability of incomplete aminoacylation of the subsequent
-      residue." Meaning that a low value indicates the next solid-phase synthesis step will have a low yield. Note that 
-      it is independent of the identity of the next amino acid (an assumption of the method).</p>
+  <div>
+    <p style="margin-bottom: 3rem">
+      Relative ease of synthesis is "inversely proportional to the probability
+      of incomplete aminoacylation of the subsequent residue." A low value
+      indicates the next solid-phase synthesis step will have a low yield. It is
+      independent of the identity of the next amino acid.
+    </p>
+  </div>
 </template>
 
 <script>
