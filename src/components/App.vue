@@ -202,7 +202,7 @@
         <div class="columns">
           <div class="block column">
             <p>
-              (c) <a href="https://twitter.com/andrewwhite01">Andrew White</a>,
+              (c) <a href="https://twitter.com/andrewwhite01">Andrew White</a>, <a href="https://github.com/mehradans92">Mehrad Ansari</a>
               2022
             </p>
             <p>
