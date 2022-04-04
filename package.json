@@ -7,7 +7,7 @@
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --no-cache --no-scope-hoist --public-url ./"
   },
-  "author": "Andrew White",
+  "author": "Andrew White, Mehrad Ansari",
   "license": "GNUv3",
   "dependencies": {
     "@parcel/transformer-vue": "^2.0.1",
