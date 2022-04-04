@@ -45,7 +45,9 @@ export default function getModel() {
             if (e)
                 return parseInt(stoi[e.toUpperCase()]);
         }));
-        return tf.reshape(vec, [1, -1]);
+        const counts_vec = tf.slice(tf.bincount(tf.cast(vec, 'int32'), [], 21), 1, -1)
+        const counts_fr_vec = tf.div(counts_vec, tf.sum(counts_vec, axis=-1, keepdims=true))
+        return [tf.reshape(vec, [1, -1]), tf.reshape(counts_fr_vec, [1, -1])];
     }
     return rnn_mod
 }
