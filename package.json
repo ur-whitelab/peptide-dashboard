@@ -1,6 +1,6 @@
 {
   "name": "peptide-dashboard",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "description": "Peptide Dashboard",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
