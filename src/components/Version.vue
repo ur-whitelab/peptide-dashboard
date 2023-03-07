@@ -13,7 +13,7 @@
         <strong> v{{ version }}</strong> You are viewing an early version of
         ongoing research. The predictions shown here are based on models that
         are still being improved. Please see our 
-        <a herf="https://www.biorxiv.org/content/10.1101/2022.05.18.492545v2"> our preprint</a> for more details 
+        <a herf="https://www.biorxiv.org/content/10.1101/2022.05.18.492545v2.abstract"> our preprint</a> for more details 
         on the models and results.
         See the source code, open an issue if see a problem,
         and watch the
