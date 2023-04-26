@@ -17,25 +17,17 @@ Check out [this notebook](https://github.com/ur-whitelab/peptide-dashboard/blob/
 [See paper](https://pubs.acs.org/doi/10.1021/acs.jcim.2c01317) and the citation:
 
 ```bibtex
-@article{doi:10.1021/acs.jcim.2c01317,
-author = {Ansari, Mehrad and White, Andrew D.},
-title = {Serverless Prediction of Peptide Properties with Recurrent Neural Networks},
-journal = {Journal of Chemical Information and Modeling},
-volume = {0},
-number = {0},
-pages = {null},
-year = {0},
-doi = {10.1021/acs.jcim.2c01317},
-    note ={PMID: 37010950},
-
-URL = { 
-        https://doi.org/10.1021/acs.jcim.2c01317
-    
-},
-eprint = { 
-        https://doi.org/10.1021/acs.jcim.2c01317
-    
-}
-
+@article{Ansari2023,
+  doi = {10.1021/acs.jcim.2c01317},
+  url = {https://doi.org/10.1021/acs.jcim.2c01317},
+  year = {2023},
+  month = apr,
+  publisher = {American Chemical Society ({ACS})},
+  volume = {63},
+  number = {8},
+  pages = {2546--2553},
+  author = {Mehrad Ansari and Andrew D. White},
+  title = {Serverless Prediction of Peptide Properties with Recurrent Neural Networks},
+  journal = {Journal of Chemical Information and Modeling}
 }
 ```
